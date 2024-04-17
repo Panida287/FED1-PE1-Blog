@@ -1,15 +1,12 @@
 const userData = JSON.parse(localStorage.getItem('userData'));
 
 // Define constants for each property
-const name = userData.data.name;
-const email = userData.data.email;
-const avatarUrl = userData.data.avatar.url;
-const avatarAlt = userData.data.avatar.alt;
-const bannerUrl = userData.data.banner.url;
-const bannerAlt = userData.data.banner.alt;
 const accessToken = userData.data.accessToken;
+const apiUrl = "https://v2.api.noroff.dev/blog/posts/panpae";
 const formData = document.getElementById('blogPostForm');
+const postsResult = document.getElementById('posts');
 
+// Post new posts
 formData.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -21,22 +18,19 @@ formData.addEventListener('submit', function(event) {
     const postData = {
         title: titleData
     };
-
     if (bodyData.trim() !== "") {
         postData.body = bodyData;
     }
-
     if (tagsData.trim() !== "") {
         postData.tags = [tagsData];
     }
-
     if (isValidUrl(imageData)) {
         postData.media = {
             url: imageData
         };
     }
 
-    fetch("https://v2.api.noroff.dev/blog/posts/panpae", {
+    fetch(apiUrl, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -59,6 +53,42 @@ formData.addEventListener('submit', function(event) {
         });
 });
 
+// Display posts
+fetch(apiUrl)
+    .then(res => {
+        return res.json();
+    })
+    .then(response => {
+        const posts = response.data; // Access the array of posts
+        posts.forEach(post => {
+            displayPost(post);
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+function displayPost(post) {
+    const media = post.media || { url: '', alt: '' }; // Provide default values if media is null,
+    const author = post.author || { name: '', avatar: { url: '', alt: '' } };
+    const formattedCreatedDate = formatDateTime(post.created);
+    postsResult.innerHTML += `
+        <div class="post">
+            <img alt="${media.alt}" src="${media.url}">
+            <h3>${post.title}</h3>
+            <p>${post.body}</p>
+            <p>Published: ${formattedCreatedDate}</p>
+            <div class="author">
+                <img class="avatar" alt="${author.avatar.alt}" src="${author.avatar.url}">
+                <p>${author.name}</p>
+            </div>
+            <div class="btn-container">
+                <button type="button">Edit</button>
+                <button type="button">Delete</button>
+            </div>
+        </div>`;
+}
+
 function isValidUrl(url) {
     try {
         new URL(url);
@@ -66,4 +96,11 @@ function isValidUrl(url) {
     } catch (error) {
         return false;
     }
+}
+
+// change date and time format
+
+function formatDateTime(dateTimeString) {
+    const date = new Date(dateTimeString);
+    return date.toLocaleString(); // Convert date to local date and time format
 }
