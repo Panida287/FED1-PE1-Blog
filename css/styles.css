@@ -1,0 +1,63 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background: #FFFEF6;
+}
+
+button {
+    display: flex;
+    padding: 10px 40px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    font-family: "Bebas Neue", sans-serif;
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-white {
+    color: white;
+}
+
+.btn-white:hover {
+    color: black;
+    background-color: white;
+}
+
+.btn-black {
+    color: black;
+    border: 1px solid black;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.btn-black:hover {
+    color: white;
+    background-color: black;
+}
+
+.btn-red {
+    color: red;
+    border: 1px solid red;
+}
+
+.btn-red:hover {
+    color: white;
+    background-color: red;
+}
+
+.dropdown-items {
+    background: white;
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+    padding: 10px 40px;
+}
+
+.dropdown-items:hover {
+    background: black;
+    color: white;
+}

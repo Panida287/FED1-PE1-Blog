@@ -1,0 +1,141 @@
+.banner {
+    background: url("https://i.imgur.com/veCq7eO.jpeg") no-repeat left/cover;
+    width: 100%;
+    height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.welcome-text-background {
+    background: rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 224px;
+    width: 100%;
+}
+
+.line {
+    background: white;
+    height: 2px;
+    width: 50%;
+}
+
+.welcome-text {
+    font-family: "Dancing Script", cursive;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+.banner > p {
+    color: white;
+    font-family: "bitter", sans-serif;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.btn-white {
+    font-size: 20px;
+}
+
+.header {
+    height: 73px;
+    margin: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #FFFEF6;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+nav {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.search {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#search-input {
+    outline: none;
+    border-radius: 16px;
+}
+
+.top-container {
+    display: flex;
+    margin: 40px;
+    gap: 20px;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.about h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+
+.about p {
+    font-family: "bitter", sans-serif;
+    text-indent: 80px;
+    font-size: 16px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.carousel {
+    height: 390px;
+    width: 100%;
+    background: bisque;
+    margin: 20px;
+}
+
+.carousel-container h3 {
+    font-family: "Bebas Neue", sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-container {
+    display: flex;
+}
