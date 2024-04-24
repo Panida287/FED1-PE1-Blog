@@ -14,6 +14,7 @@ formData.addEventListener('submit', function(event) {
     const bodyData = document.getElementById('body').value;
     const tagsData = document.getElementById('tags').value;
     const imageData = document.getElementById('imageUrl').value;
+    const imageAlt = document.getElementById('imageAlt').value;
 
     const postData = {
         title: titleData
@@ -28,7 +29,11 @@ formData.addEventListener('submit', function(event) {
         postData.media = {
             url: imageData
         };
+        if (imageAlt.trim() !== "") {
+            postData.media.alt = imageAlt;
+        }
     }
+
 
     fetch(apiUrl, {
         method: "POST",
@@ -70,7 +75,8 @@ fetch(apiUrl)
 
 function displayPost(post) {
     const media = post.media || { url: '', alt: '' }; // Provide default values if media is null,
-    const author = post.author || { name: '', avatar: { url: '', alt: '' } };
+    const author = post.author || { name: '', avatar: { url: '', alt: '' }
+    };
     const formattedCreatedDate = formatDateTime(post.created);
     postsResult.innerHTML += `
         <div class="post">
