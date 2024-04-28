@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/index.css"/>
     <title>Mum, how do I...?</title>
     <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
+    <script src="javascript/banner-carousel.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
@@ -21,60 +22,275 @@
 </head>
 <body>
 
-<div class="banner" aria-label="picture of a daughter cooking with her mum">
-    <div class="welcome-text-background">
-        <div class="line"></div>
-        <div class="welcome-text">
-            "Cooking good is
-            <br>
-            cooking mum's way"
+<header>
+
+    <div class="banner" aria-label="picture of a daughter cooking with her mum">
+        <div class="welcome-text-background">
+            <div class="line"></div>
+            <div class="welcome-text">
+                "Cooking good is
+                <br>
+                cooking mum's way"
+            </div>
+            <div class="line"></div>
         </div>
-        <div class="line"></div>
-    </div>
-    <p>
-        Stay updated
-    </p>
-    <button class="btn-white" aria-label="click to subscribe">
-        subscribe
-    </button>
-</div>
-
-<div class="header">
-    <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
-    <nav>
-        <a href="#" aria-label="click to go to homepage">
-            home
-        </a>
-        <a href="#" aria-label="click to go to blog page">
-            blog
-        </a>
-        <a href="#" aria-label="click to go to about">
-            about
-        </a>
-    </nav>
-    <div class="search">
-        <label for="search-input" id="search-label">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </label>
-        <input type="text" id="search-input">
-    </div>
-</div>
-
-<div class="top-container">
-    <div class="about">
-        <h3>
-            about
-        </h3>
         <p>
-            Welcome to "Mum, How Do I..?", your virtual kitchen companion where cherished family recipes and culinary
-            wisdom come together. Imagine being far from home, craving the comforting flavors of your childhood
-            favorites, and reaching for the phone to call Mum for guidance. Our blog is a tribute to those heartfelt
-            moments, celebrating the timeless tradition of passing down recipes from generation to generation. With
-            "Cooking good is cooking Mum's way" as our motto, we invite you to embark on a journey filled with
-            nostalgia, warmth, and the joy of recreating beloved dishes that taste just like home. Let's cook together,
-            Mum's way.
+            Stay updated
         </p>
-        <div class="social-media">
+        <button class="btn-white" aria-label="click to subscribe">
+            subscribe
+        </button>
+    </div>
+
+    <div class="header">
+        <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
+        <nav>
+            <a href="#" aria-label="click to go to homepage">
+                home
+            </a>
+            <a href="#" aria-label="click to go to blog page">
+                blog
+            </a>
+            <a href="#" aria-label="click to go to about">
+                about
+            </a>
+        </nav>
+        <div class="search">
+            <label for="search-input" id="search-label">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+            <input type="text" id="search-input">
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <div class="top-container">
+        <div class="about">
+            <h3>
+                about
+            </h3>
+            <p>
+                Welcome to "Mum, How Do I..?", your virtual kitchen companion where cherished family recipes and
+                culinary
+                wisdom come together. Imagine being far from home, craving the comforting flavors of your childhood
+                favorites, and reaching for the phone to call Mum for guidance. Our blog is a tribute to those heartfelt
+                moments, celebrating the timeless tradition of passing down recipes from generation to generation. With
+                "Cooking good is cooking Mum's way" as our motto, we invite you to embark on a journey filled with
+                nostalgia, warmth, and the joy of recreating beloved dishes that taste just like home. Let's cook
+                together,
+                Mum's way.
+            </p>
+            <div class="social-media">
+                <a href="#" aria-label="click to go to facebook page">
+                    <img class="social-media-icon" alt="facebook-icon" src="assets/social-media/facebook.png">
+                </a>
+                <a href="#" aria-label="click to go to instagram page">
+                    <img class="social-media-icon" alt="instagram-icon" src="assets/social-media/instagram.png">
+                </a>
+                <a href="#" aria-label="click to go to pinterest page">
+                    <img class="social-media-icon" alt="interest-icon" src="assets/social-media/pinterest.png">
+                </a>
+            </div>
+        </div>
+        <div class="carousel-container">
+            <h3>
+                New recipes
+            </h3>
+            <div class="carousel" data-carousel>
+                <div data-slides>
+                    <a href="#" class="slide" id="slide-1">
+                        <div class="slide-overlay">
+                            <h3 class="slide-title">1</h3>
+                            <p class="slide-text"></p>
+                        </div>
+                    </a>
+                    <a href="#" class="slide" id="slide-2">
+                        <div class="slide-overlay">
+                            <h3 class="slide-title">2</h3>
+                            <p class="slide-text"></p>
+                        </div>
+                    </a>
+                    <a href="#" class="slide" id="slide-3">
+                        <div class="slide-overlay">
+                            <h3 class="slide-title">3</h3>
+                            <p class="slide-text"></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="arrow-container">
+                <button class="arrow-btn prev" data-carousel-button="prev">
+                    <img alt="left-arrow" src="assets/carousel-btns/prev.png">
+                </button>
+                <button class="arrow-btn next" data-carousel-button="next">
+                    <img alt="right-arrow" src="assets/carousel-btns/next.png">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="contents">
+        <div class="highlight">
+            <h3>
+                Highlight
+            </h3>
+            <div class="highlight-display">
+                <div class="highlight-content">
+                    <a class="highlight-thumbnail">
+                    </a>
+                    <h4>Title</h4>
+                </div>
+                <div class="highlight-content">
+                    <a class="highlight-thumbnail">
+                    </a>
+                    <h4>Title</h4>
+                </div>
+                <div class="highlight-content">
+                    <a class="highlight-thumbnail">
+                    </a>
+                    <h4>Title</h4>
+                </div>
+                <div class="highlight-content">
+                    <a class="highlight-thumbnail">
+                    </a>
+                    <h4>Title</h4>
+                </div>
+            </div>
+        </div>
+        <div class="main-contents">
+            <h3>
+                More recipes
+            </h3>
+            <div class="main-contents-display">
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+                <a href="#" class="main-contents-container">
+                    <div class="main-contents-thumbnail">
+                        <div class="main-contents-overlay"></div>
+                        <h4>Title</h4>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <img class="logo-footer" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
+    <div class="subscribe-footer">
+        <label for="email-input" id="email-input-label">
+            Stay updated
+        </label>
+        <input type="email" id="email-input">
+        <button class="btn-black" aria-label="click to subscribe">
+            subscribe
+        </button>
+    </div>
+    <div class="social-media-footer">
+        <h4>Follow us</h4>
+        <div class="social-media-icon-container">
             <a href="#" aria-label="click to go to facebook page">
                 <img class="social-media-icon" alt="facebook-icon" src="assets/social-media/facebook.png">
             </a>
@@ -86,25 +302,8 @@
             </a>
         </div>
     </div>
-    <div class="carousel-container">
-        <h3 class="new-recipe">
-            New recipes
-        </h3>
-        <div class="carousel">
-            <div class="slide"></div>
-            <h4 class="title"></h4>
-            <p class="recipe-text"></p>
-        </div>
-        <div class="arrow-container">
-            <button>
-                <img alt="left-arrow" src="assets/carousel-btns/prev.png">
-            </button>
-            <button>
-                <img alt="right-arrow" src="assets/carousel-btns/next.png">
-            </button>
-        </div>
-    </div>
-</div>
+    <p class="copyright">Copyright 2024</p>
+</footer>
 
 </body>
 </html>
