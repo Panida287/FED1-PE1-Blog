@@ -167,18 +167,17 @@
 
 .contents {
     display: flex;
-    width: 100%;
-    justify-content: center;
 }
 
 .highlight {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 300px;
     align-items: center;
-    margin-left: 40px;
+    padding-left: 40px;
     padding-right: 40px;
     border-right: solid 1px black;
+    overflow: hidden;
 }
 
 .highlight h3 {
@@ -189,9 +188,14 @@
     justify-content: center;
 }
 
+.highlight-display {
+    width: 100%;
+}
+
 .highlight-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -211,6 +215,14 @@
     width: 225px;
     height: 225px;
     cursor: pointer;
+}
+
+.main-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .main-contents h3 {
