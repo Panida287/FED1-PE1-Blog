@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18994ca-528e-42e3-8c2f-69db8d571050" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/post/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/admin-bg-header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/make.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/post/make.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "implement-blog-post-admin-page",
+    "git-widget-placeholder": "implement-post-new-and-edit-page",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,6 +72,7 @@
       <updated>1713988460761</updated>
       <workItem from="1713988461806" duration="6811000" />
       <workItem from="1714044793516" duration="2506000" />
+      <workItem from="1714409273752" duration="2165000" />
     </task>
     <servers />
   </component>
