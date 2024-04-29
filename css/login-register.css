@@ -1,0 +1,89 @@
+body {
+    background: url("https://i.imgur.com/TTc86MJ.jpeg") no-repeat 0 0/cover;
+    min-height: 100vh;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#form {
+    border-radius: 16px;
+    background: #FFFEF6;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    width: 50%;
+    max-width: 450px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-header,
+.register-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-header > h2,
+.register-header > h2{
+    font-family: "Bebas Neue", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-family: "Bebas Neue", sans-serif;
+}
+
+input {
+    width: 250px;
+    outline: none;
+    border-radius: 8px;
+    height: 30px;
+    padding: 4px;
+}
+
+textarea {
+    width: 250px;
+    outline: none;
+    border-radius: 8px;
+}
+
+.email,
+.username,
+.password,
+.repeat-password,
+.avatar,
+.bio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#bio {
+    height: 100px;
+}
+
+#login-btn {
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.register {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    font-family: "bitter", sans-serif;
+    font-size: 12px;
+}
+
+#message {
+    color: red;
+}
+
