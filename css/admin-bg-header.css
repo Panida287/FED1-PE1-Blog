@@ -1,0 +1,50 @@
+body {
+    background: url("https://i.imgur.com/TTc86MJ.jpeg") no-repeat 0 0/cover;
+    min-height: 100vh;
+    object-fit: cover;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: "Bebas Neue", sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.admin > h3 {
+    padding-top: 3px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: "bitter", sans-serif;
+    font-size: 14px;
+}
+
+.avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: red;
+}
+
+#logout-btn {
+    padding: 0;
+}
+
+#logout-btn i {
+    font-size: 20px;
+    margin-left: 10px;
+}
