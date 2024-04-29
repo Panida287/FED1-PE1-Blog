@@ -212,8 +212,8 @@
 .highlight-thumbnail {
     background: aqua;
     border-radius: 50%;
-    width: 225px;
-    height: 225px;
+    width: 200px;
+    height: 200px;
     cursor: pointer;
 }
 
