@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18994ca-528e-42e3-8c2f-69db8d571050" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/javascript/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javascript/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javascript/highlight-display.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/login-register.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login-register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "account-login-and-register-pages",
+    "git-widget-placeholder": "backend-integration",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,7 +71,6 @@
       <workItem from="1713988461806" duration="6811000" />
       <workItem from="1714044793516" duration="2506000" />
       <workItem from="1714409273752" duration="2460000" />
-      <workItem from="1714421993923" duration="1869000" />
     </task>
     <servers />
   </component>

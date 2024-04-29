@@ -89,30 +89,30 @@
 
 /*carousel starts here*/
 
-.carousel-container h3 {
+.carousel-container > h3 {
     font-family: beau rivage, sans-serif;
     font-size: 40px;
 }
 
 .carousel-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 500px;
     align-items: center;
-    width: 60%;
+    justify-items: center;
+    margin: 20px auto 20px auto;
 }
 
 .carousel {
     height: 390px;
     width: 100%;
-    margin: 20px;
     position: relative;
 }
 
 .slide {
     position: absolute;
     width: 100%;
+    max-width: 500px;
     height: 100%;
-    background: aqua;
     left: 0;
     cursor: pointer;
     opacity: 0;
@@ -153,6 +153,7 @@
 .arrow-container {
     display: flex;
     gap: 80px;
+    margin-top: 20px;
 }
 
 .arrow-btn {
