@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="Mum, how do I...?" content="cooking good is cooking mum's way"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:image" content="assets/favicon_io"/>
+    <link rel="icon" type="image/png" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png"/>
+    <link rel="stylesheet" href="../css/styles.css"/>
+    <link rel="stylesheet" href="../css/admin.css"/>
+    <title>Admin</title>
+    <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Bebas+Neue&family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+    <div class="header">
+        <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="../assets/logo.png">
+        <div class="admin">
+            <i class="fa-regular fa-user"></i>
+            <h3>admin</h3>
+        </div>
+        <div class="user">
+            <div class="avatar"></div>
+            <p class="username">Panida</p>
+            <button id="logout-btn" aria-label="click to logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <div class="buttons">
+        <button id="sort" class="btn-black">
+            sort by
+        </button>
+        <button id="filter" class="btn-black">
+            filter by
+        </button>
+        <div class="search">
+            <input type="text" id="search-input">
+            <label for="search-input" id="search-input-label">
+                <button class="btn-black">
+                    search
+                </button>
+            </label>
+        </div>
+    </div>
+
+    <h1 class="post-header">all posts</h1>
+
+    <div class="post">
+        <div class="img-container">
+            <div class="img"></div>
+        </div>
+        <div class="details">
+            <div class="title">
+                title
+            </div>
+            <div class="body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod urna vel augue fermentum
+                tincidunt. Proin commodo metus quis felis pretium consectetur.
+            </div>
+            <div class="user">
+                <div class="avatar"></div>
+                <p class="username">Panida</p>
+                <p class="date-time">date/time</p>
+            </div>
+        </div>
+        <div class="edit-delete-btns">
+            <button class="btn-black" id="edit-btn" aria-label="click to edit post">
+                edit
+            </button>
+            <button class="btn-red" id="delete-btn" aria-label="click to delete post">
+                delete
+            </button>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

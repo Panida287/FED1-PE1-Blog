@@ -1,0 +1,132 @@
+body {
+    background: url("https://i.imgur.com/TTc86MJ.jpeg") no-repeat 0 0/cover;
+    min-height: 100vh;
+    object-fit: cover;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.admin > h3 {
+    padding-top: 3px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: "bitter", sans-serif;
+    font-size: 14px;
+}
+
+.avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: red;
+}
+
+#logout-btn {
+    padding: 0;
+}
+
+#logout-btn i {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.search {
+    margin-left: 40px;
+}
+
+#search-input {
+    height: 30px;
+    padding: 10px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue", sans-serif;
+    margin: 40px;
+    font-size: 20px;
+}
+
+.post {
+    display: grid;
+    background: #FFFEF6;
+    width: 80%;
+    max-width: 800px;
+    grid-template-columns: 1fr 2fr 0.5fr;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    height: 150px;
+    width: 150px;
+    background: aqua;
+    margin: 20px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-family: "Bebas Neue", sans-serif;
+    padding-bottom: 20px;
+}
+
+.body {
+    font-family: "bitter", sans-serif;
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.edit-delete-btns {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#edit-btn,
+#delete-btn {
+    width: 50px;
+}
+
+
+
