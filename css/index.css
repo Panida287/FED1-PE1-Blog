@@ -55,6 +55,7 @@
     display: flex;
     margin: 40px;
     gap: 20px;
+    justify-content: center;
 }
 
 .about {
@@ -92,28 +93,37 @@
 .carousel-container > h3 {
     font-family: beau rivage, sans-serif;
     font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .carousel-container {
-    display: grid;
-    grid-template-columns: 500px;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    justify-content: flex-start;
     align-items: center;
-    justify-items: center;
-    margin: 20px auto 20px auto;
+    margin: 0;
+}
+
+.carousel-display {
+    display: flex;
+    justify-content: center;
 }
 
 .carousel {
     height: 390px;
     width: 100%;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
+
 
 .slide {
     position: absolute;
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     height: 100%;
-    left: 0;
     cursor: pointer;
     opacity: 0;
     transition: 300ms opacity ease-in-out;
@@ -211,7 +221,6 @@
 }
 
 .highlight-thumbnail {
-    background: aqua;
     border-radius: 50%;
     width: 200px;
     height: 200px;
