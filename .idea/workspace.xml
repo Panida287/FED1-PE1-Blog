@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18994ca-528e-42e3-8c2f-69db8d571050" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/javascript/post-link.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/carousel-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/carousel-display.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javascript/posts-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/posts-display.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
