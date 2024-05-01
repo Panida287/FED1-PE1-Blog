@@ -1,4 +1,4 @@
-    const carousel = document.querySelector('.carousel[data-carousel]');
+    const carousel = document.querySelector('[data-carousel]');
     const slidesContainer = carousel.querySelector('[data-slides]');
 
     // Fetch data from API
