@@ -13,7 +13,7 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
             mainContents.appendChild(contents);
 
             const thumbnail = document.createElement('a');
-            thumbnail.href = '#';
+            thumbnail.href = `../post/post.html?id=${data.id}`;
             thumbnail.classList.add('main-contents-thumbnail');
             thumbnail.style.backgroundImage = `url(${post.media.url})`;
             thumbnail.style.backgroundRepeat = 'no-repeat';
@@ -40,7 +40,7 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
                 const readMoreButton = document.createElement('button');
                 readMoreButton.textContent = 'Read more';
                 readMoreButton.addEventListener('click', () => {
-                    window.location.href = 'another-page.html';
+                    window.location.href = `../post/post.html?id=${data.id}`;
                 });
                 contentBody.appendChild(readMoreButton);
             }
