@@ -14,7 +14,7 @@ const postTags = getQueryParamValue('tags');
 function fetchRelatedPosts(tags, currentPostId) {
     console.log('Fetching related posts with tags:', tags);
     const apiUrl = `${blog}panpae`;
-    const tagQuery = tags.map(tag => `tags_like=${tag}`).join('&'); // Use 'tags_like' to match similar tags
+    const tagQuery = `tags_like=${tags.join('&tags_like=')}`; // Use 'tags_like' to match similar tags
     return fetch(`${apiUrl}?${tagQuery}`) // Fetch posts with similar tags
         .then(response => {
             if (!response.ok) {
@@ -24,8 +24,7 @@ function fetchRelatedPosts(tags, currentPostId) {
         })
         .then(data => {
             console.log('Fetched related posts:', data);
-            const filteredPosts = data.data.filter(post => post.id !== currentPostId && post.tags.some(tag => tags.includes(tag)));
-            return filteredPosts;
+            return data.data.filter(post => post.id !== currentPostId && post.tags.some(tag => tags.includes(tag)));
         })
         .catch(error => {
             console.error('Error fetching or processing data:', error.message);
@@ -49,13 +48,14 @@ function displayRelatedPosts(relatedPosts) {
 
     // Loop through the related posts and display them
     slicedRelatedPosts.forEach(post => {
+        const tagsString = post.tags.join(',');
         const relatedPostImage = document.createElement('a');
         relatedPostImage.classList.add('related-thumbnail');
+        relatedPostImage.href = `post.html?id=${post.id}&tags=${tagsString}`;
         relatedPostImage.style.backgroundImage = `url(${post.media.url})`;
         relatedPostImage.style.backgroundRepeat = 'no-repeat';
         relatedPostImage.style.backgroundSize = 'cover';
         relatedPostImage.style.backgroundPosition = 'center';
-        relatedPostImage.href = `post.html?id=${post.id}`;
 
         relatedContent.appendChild(relatedPostImage);
 
@@ -86,4 +86,4 @@ if (postTags) {
     console.error('Post tags not found');
 }
 
-console.log('postTags:', postTags);
+console.log('Post tags:', postTags);
