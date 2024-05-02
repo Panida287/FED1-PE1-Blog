@@ -12,8 +12,9 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
 
             mainContents.appendChild(contents);
 
+            const tagsString = post.tags.join(',');
             const thumbnail = document.createElement('a');
-            thumbnail.href = `post.html?id=${post.id}&tags=${post.tags.join(',')}`;
+            thumbnail.href = `post.html?id=${post.id}&tags=${tagsString}`;
             thumbnail.classList.add('main-contents-thumbnail');
             thumbnail.style.backgroundImage = `url(${post.media.url})`;
             thumbnail.style.backgroundRepeat = 'no-repeat';
