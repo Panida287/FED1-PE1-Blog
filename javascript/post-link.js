@@ -24,6 +24,7 @@ if (postId) {
         })
         .then(data => {
             const selectedPost = data.data;
+            console.log(selectedPost);
 
             if (selectedPost) {
                 title.textContent = selectedPost.title;

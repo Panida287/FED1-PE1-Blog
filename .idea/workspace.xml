@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18994ca-528e-42e3-8c2f-69db8d571050" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javascript/carousel-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/carousel-display.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javascript/post-link.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/post-link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/posts-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/posts-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/make.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/post.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +79,7 @@
       <workItem from="1714575687006" duration="3237000" />
       <workItem from="1714579360012" duration="345000" />
       <workItem from="1714649743023" duration="981000" />
+      <workItem from="1714665771180" duration="713000" />
     </task>
     <servers />
   </component>
