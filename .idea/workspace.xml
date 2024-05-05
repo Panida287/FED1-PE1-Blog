@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18994ca-528e-42e3-8c2f-69db8d571050" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/javascript/post-new.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javascript/admin-header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/related-recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/related-recipes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/admin-bg-header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin-bg-header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/make.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/make.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/post-new.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/post-new.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/make.html" beforeDir="false" afterPath="$PROJECT_DIR$/make.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,8 @@
       <workItem from="1714579360012" duration="345000" />
       <workItem from="1714649743023" duration="981000" />
       <workItem from="1714665771180" duration="12139000" />
-      <workItem from="1714690035190" duration="1397000" />
+      <workItem from="1714690035190" duration="2000000" />
+      <workItem from="1714929801149" duration="11763000" />
     </task>
     <servers />
   </component>

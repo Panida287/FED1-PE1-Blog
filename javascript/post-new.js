@@ -1,8 +1,13 @@
-const userData = JSON.parse(localStorage.getItem('userData'));
+const accessToken = localStorage.getItem('accessToken');
 
-const accessToken = userData.data.accessToken;
 const apiUrl = "https://v2.api.noroff.dev/blog/posts/panpae";
-const formData = document.getElementById('blogPostForm');
+const formData = document.getElementById('blog-post-form');
+const previewBtn = document.getElementById('preview-btn');
+const backToAdmin = document.getElementById('back-to-admin');
+
+backToAdmin.addEventListener('click', () => {
+    window.location.href = 'admin.html';
+})
 
 formData.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -11,6 +16,7 @@ formData.addEventListener('submit', function(event) {
     const bodyData = document.getElementById('body').value;
     const tagsData = document.getElementById('tags').value;
     const imageData = document.getElementById('imageUrl').value;
+    const postSuccess = document.getElementById('post-success');
 
     const postData = {
         title: titleData
@@ -44,11 +50,20 @@ formData.addEventListener('submit', function(event) {
         })
         .then(data => {
             console.log('Success:', data);
-            // Optionally, you can perform any further actions here upon successful posting
+            // Clear input fields after successful posting
+            formData.reset();
         })
         .catch(error => {
             console.error('Error:', error);
         });
+
+    postSuccess.style.display = 'flex';
+    const closeBtn = document.getElementById('success-close-btn');
+
+    closeBtn.addEventListener('click', function() {
+        postSuccess.style.display ='none';
+    })
+
 });
 
 function isValidUrl(string) {
@@ -59,4 +74,35 @@ function isValidUrl(string) {
         return false;
     }
 }
+
+previewBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    const previewContent = document.getElementById('preview');
+    const titleData = document.getElementById('title').value;
+    const bodyData = document.getElementById('body').value;
+    const imageData = document.getElementById('imageUrl').value;
+    const previewTitle = document.getElementById('preview-title');
+    const previewBody = document.getElementById('preview-body');
+    const previewImage = document.getElementById('preview-img');
+    const overlay = document.getElementById('overlay');
+
+    previewTitle.textContent = titleData;
+    previewBody.textContent = bodyData;
+    previewImage.style.backgroundImage = `url(${imageData})`;
+    previewImage.style.backgroundRepeat = 'no-repeat';
+    previewImage.style.backgroundSize = 'cover';
+    previewImage.style.backgroundPosition = 'center';
+
+    overlay.style.display = 'flex';
+    previewContent.style.display = 'flex';
+
+    const closeBtn = document.getElementById('preview-close-btn');
+
+    closeBtn.addEventListener('click', function() {
+        previewContent.style.display = 'none';
+        overlay.style.display ='none';
+    })
+
+})
+
 
