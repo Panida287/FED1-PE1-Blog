@@ -22,7 +22,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
             // If login successful, store data in local storage
             localStorage.setItem('userData', JSON.stringify(data));
             // Redirect or perform other actions
-            window.location.href = '../post/admin.html';
+            window.location.href = '../admin.html';
         })
         .catch(error => {
             console.error('Error:', error.message);
