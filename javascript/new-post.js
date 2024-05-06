@@ -1,7 +1,6 @@
 const accessToken = localStorage.getItem('accessToken');
 const apiUrl = "https://v2.api.noroff.dev/blog/posts/panpae";
 const formData = document.getElementById('blog-post-form');
-const editFormData = document.getElementById('edit-form');
 const previewBtn = document.getElementById('preview-btn');
 const backToAdmin = document.getElementById('back-to-admin');
 
@@ -20,6 +19,7 @@ function handleFormSubmission(method) {
         const tagsData = document.getElementById('tags').value;
         const imageData = document.getElementById('imageUrl').value;
         const postSuccess = document.getElementById('post-success');
+        const overlay = document.getElementById('overlay');
 
         const postData = {
             title: titleData
@@ -61,10 +61,13 @@ function handleFormSubmission(method) {
             });
 
         postSuccess.style.display = 'flex';
+        overlay.style.display = 'flex';
         const closeBtn = document.getElementById('success-close-btn');
 
         closeBtn.addEventListener('click', function() {
             postSuccess.style.display ='none';
+            overlay.style.display ='none';
+            window.location.href = 'admin.html';
         });
     };
 }
@@ -107,5 +110,3 @@ previewBtn.addEventListener('click', function(event) {
         overlay.style.display ='none';
     });
 });
-
-formData.addEventListener('submit', handleFormSubmission("POST", "new-post"));

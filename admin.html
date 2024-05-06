@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/admin-bg-header.css"/>
     <title>Admin</title>
     <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
+    <script src="javascript/admin-header.js" defer></script>
+    <script src="javascript/admin.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
@@ -22,20 +24,28 @@
 </head>
 <body>
 
-<header>
+<div id="overlay"></div>
 
+<header>
     <div class="header">
         <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
-        <div class="admin">
+        <a href="admin.html" class="admin">
             <i class="fa-regular fa-user"></i>
             <h3>admin</h3>
-        </div>
+        </a>
         <div class="user">
-            <div class="avatar"></div>
-            <p class="username">Panida</p>
+            <div id="admin-avatar" class="avatar"></div>
+            <p id="admin-username" class="username">Panida</p>
             <button id="logout-btn" aria-label="click to logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
+        </div>
+    </div>
+    <div id="logout-box">
+        <h4>Do you want to logout?</h4>
+        <div class="yes-no-btns-container">
+            <button id="logout-confirm" class="btn-black">yes</button>
+            <button id="logout-abort" class="btn-black">no</button>
         </div>
     </div>
 </header>
@@ -49,6 +59,9 @@
         <button id="filter" class="btn-black">
             filter by
         </button>
+        <button class="btn-black" id="post-new">
+            + post new
+        </button>
         <div class="search">
             <input type="text" id="search-input">
             <label for="search-input" id="search-input-label">
@@ -61,30 +74,19 @@
 
     <h1 class="post-header">all posts</h1>
 
-    <div class="post">
-        <div class="img-container">
-            <div class="img"></div>
-        </div>
-        <div class="details">
-            <div class="title">
-                title
-            </div>
-            <div class="body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod urna vel augue fermentum
-                tincidunt. Proin commodo metus quis felis pretium consectetur.
-            </div>
-            <div class="user">
-                <div class="avatar"></div>
-                <p class="username">Panida</p>
-                <p class="date-time">date/time</p>
-            </div>
-        </div>
-        <div class="edit-delete-btns">
-            <button class="btn-black" id="edit-btn" aria-label="click to edit post">
-                edit
+    <div id="posts-container"></div>
+    <div id="delete-dialog">
+        <h4>
+            Post will be permanently deleted
+            <br>
+            Are you sure?
+        </h4>
+        <div class="delete-btns-container">
+            <button class="btn-red" id="delete-confirm">
+                Yes
             </button>
-            <button class="btn-red" id="delete-btn" aria-label="click to delete post">
-                delete
+            <button class="btn-black" id="delete-abort">
+                No
             </button>
         </div>
     </div>

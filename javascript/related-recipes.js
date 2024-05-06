@@ -48,7 +48,7 @@ function displayRelatedPosts(relatedPosts) {
 
     // Loop through the related posts and display them
     slicedRelatedPosts.forEach(post => {
-        const tagsString = post.tags.join(',');
+        const tagsString = post.tags[0]
         const relatedPostImage = document.createElement('a');
         relatedPostImage.classList.add('related-thumbnail');
         relatedPostImage.href = `post.html?id=${post.id}&tags=${tagsString}`;
@@ -85,4 +85,3 @@ if (postTags) {
 } else {
     console.error('Post tags not found');
 }
-

@@ -25,7 +25,6 @@
 <body>
 
 <header>
-
     <div class="header">
         <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
         <a href="admin.html" class="admin">
@@ -33,8 +32,8 @@
             <h3>admin</h3>
         </a>
         <div class="user">
-            <div id="avatar" class="avatar"></div>
-            <p id="username" class="username">Panida</p>
+            <div id="admin-avatar" class="avatar"></div>
+            <p id="admin-username" class="username">Panida</p>
             <button id="logout-btn" aria-label="click to logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
@@ -102,6 +101,9 @@
 
 <!--Added script here due to using the same js as edit-post but different method for API to avoid error line-->
 <script>
-    formData.addEventListener('submit', handleFormSubmission("POST", "new-post"));
+    document.addEventListener('DOMContentLoaded', function() {
+        const editFormData = document.getElementById('edit-form');
+        editFormData.addEventListener('submit', handleFormSubmission("PUT", "new-post"));
+    });
 </script>
 </html>

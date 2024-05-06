@@ -34,8 +34,8 @@
             <h3>admin</h3>
         </a>
         <div class="user">
-            <div id="avatar" class="avatar"></div>
-            <p id="username" class="username">Panida</p>
+            <div id="admin-avatar" class="avatar"></div>
+            <p id="admin-username" class="username">Panida</p>
             <button id="logout-btn" aria-label="click to logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
@@ -93,16 +93,20 @@
 
     <div id="post-success">
         <h4>
-            New blog has been posted!
+            Post have been edited!
         </h4>
-        <button id="success-close-btn" class="btn-black">close</button>
+        <button id="success-close-btn" class="btn-black">back to admin</button>
     </div>
 </main>
 
 </body>
 
-<!--Added script here due to using the same js as new-post but different method for API to avoid error line-->
+<!-- Move the script block below the HTML element with id 'edit-form' -->
 <script>
-    editFormData.addEventListener('submit', handleFormSubmission("PUT", "edit-post"));
+    document.addEventListener('DOMContentLoaded', function() {
+        const editFormData = document.getElementById('edit-form');
+        editFormData.addEventListener('submit', handleFormSubmission("PUT", "edit-post"));
+    });
 </script>
+
 </html>

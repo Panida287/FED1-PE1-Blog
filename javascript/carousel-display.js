@@ -20,8 +20,9 @@
                 const slide = slidesContainer.querySelector(`#${slideId}`);
                 const slideTitle = slide.querySelector('.slide-title');
                 const slideText = slide.querySelector('.slide-text');
+                const tagsString = post.tags;
 
-                slide.setAttribute('href', `single-post.html?id=${post.id}`)
+                slide.setAttribute('href', `single-post.html?id=${post.id}&tags=${tagsString}`)
                 slideTitle.textContent = post.title;
                 // Truncate text to 200 characters and add "..."
                 slideText.textContent = post.body.length > 200 ? post.body.substring(0, 200) + '...' : post.body;

@@ -19,15 +19,21 @@ if (postId) {
             console.log(selectedPost);
 
             if (selectedPost) {
-                const titleData = document.getElementById('title').value;
-                const bodyData = document.getElementById('body').value;
-                const tagsData = document.getElementById('tags').value;
-                const imageData = document.getElementById('imageUrl').value;
+                const titleInput = document.getElementById('title');
+                const bodyInput = document.getElementById('body');
+                const tagsInput = document.getElementById('tags');
+                const imageInput = document.getElementById('imageUrl');
 
-                titleData.value = selectedPost.title;
-                bodyData.value = selectedPost.body;
-                tagsData.value = selectedPost.tags;
-                imageData.value = selectedPost.imageUrl;
+                titleInput.value = selectedPost.title;
+                bodyInput.value = selectedPost.body;
+                tagsInput.value = selectedPost.tags;
+                imageInput.value = selectedPost.media.url; // Corrected property name
             }
         })
+        .catch(error => {
+        console.error('Error fetching or processing data:', error.message);
+        const errorElement = document.createElement('div');
+        errorElement.classList.add('error fetching data');
+        errorElement.textContent = error.message;
+    });
 }
