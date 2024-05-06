@@ -86,4 +86,3 @@ if (postTags) {
     console.error('Post tags not found');
 }
 
-console.log('Post tags:', postTags);

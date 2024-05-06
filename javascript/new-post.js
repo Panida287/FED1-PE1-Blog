@@ -1,70 +1,73 @@
 const accessToken = localStorage.getItem('accessToken');
-
 const apiUrl = "https://v2.api.noroff.dev/blog/posts/panpae";
 const formData = document.getElementById('blog-post-form');
+const editFormData = document.getElementById('edit-form');
 const previewBtn = document.getElementById('preview-btn');
 const backToAdmin = document.getElementById('back-to-admin');
 
+// Event listener for back to admin button
 backToAdmin.addEventListener('click', () => {
     window.location.href = 'admin.html';
-})
-
-formData.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const titleData = document.getElementById('title').value;
-    const bodyData = document.getElementById('body').value;
-    const tagsData = document.getElementById('tags').value;
-    const imageData = document.getElementById('imageUrl').value;
-    const postSuccess = document.getElementById('post-success');
-
-    const postData = {
-        title: titleData
-    };
-
-    if (bodyData.trim() !== "") {
-        postData.body = bodyData;
-    }
-    if (tagsData.trim() !== "") {
-        postData.tags = [tagsData];
-    }
-    if (isValidUrl(imageData)) {
-        postData.media = {
-            url: imageData
-        }
-    }
-
-    fetch(apiUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-        body: JSON.stringify(postData)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Success:', data);
-            // Clear input fields after successful posting
-            formData.reset();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-    postSuccess.style.display = 'flex';
-    const closeBtn = document.getElementById('success-close-btn');
-
-    closeBtn.addEventListener('click', function() {
-        postSuccess.style.display ='none';
-    })
-
 });
+
+// Function to handle form submission
+function handleFormSubmission(method) {
+    return function(event) {
+        event.preventDefault();
+
+        const titleData = document.getElementById('title').value;
+        const bodyData = document.getElementById('body').value;
+        const tagsData = document.getElementById('tags').value;
+        const imageData = document.getElementById('imageUrl').value;
+        const postSuccess = document.getElementById('post-success');
+
+        const postData = {
+            title: titleData
+        };
+
+        if (bodyData.trim() !== "") {
+            postData.body = bodyData;
+        }
+        if (tagsData.trim() !== "") {
+            postData.tags = [tagsData];
+        }
+        if (isValidUrl(imageData)) {
+            postData.media = {
+                url: imageData
+            };
+        }
+
+        fetch(apiUrl, {
+            method: method,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(postData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                // Clear input fields after successful posting
+                formData.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        postSuccess.style.display = 'flex';
+        const closeBtn = document.getElementById('success-close-btn');
+
+        closeBtn.addEventListener('click', function() {
+            postSuccess.style.display ='none';
+        });
+    };
+}
 
 function isValidUrl(string) {
     try {
@@ -75,6 +78,7 @@ function isValidUrl(string) {
     }
 }
 
+// Event listener for preview button
 previewBtn.addEventListener('click', function(event) {
     event.preventDefault();
     const previewContent = document.getElementById('preview');
@@ -101,8 +105,7 @@ previewBtn.addEventListener('click', function(event) {
     closeBtn.addEventListener('click', function() {
         previewContent.style.display = 'none';
         overlay.style.display ='none';
-    })
+    });
+});
 
-})
-
-
+formData.addEventListener('submit', handleFormSubmission("POST", "new-post"));

@@ -23,7 +23,7 @@ logoutBtn.addEventListener('click', function() {
 logoutConfirm.addEventListener("click", function(){
     localStorage.removeItem("userData");
     localStorage.removeItem("accessToken");
-    window.location.href = '../account/login.html';
+    window.location.href = 'login.html';
 })
 
 logoutAbort.addEventListener('click', function() {

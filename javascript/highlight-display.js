@@ -18,7 +18,7 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
 
             const thumbnailLink = document.createElement('a');
             thumbnailLink.classList.add('highlight-thumbnail');
-            thumbnailLink.href = `post.html?id=${post.id}`;
+            thumbnailLink.href = `new-post.html?id=${post.id}`;
             thumbnailLink.style.backgroundImage = `url(${post.media.url})`;
             thumbnailLink.style.backgroundRepeat = 'no-repeat';
             thumbnailLink.style.backgroundSize = 'cover';

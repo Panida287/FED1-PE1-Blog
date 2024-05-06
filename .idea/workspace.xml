@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b18994ca-528e-42e3-8c2f-69db8d571050" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/javascript/edit-post.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/make.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/post-public.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/edit-post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javascript/admin-header.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/admin-header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/carousel-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/carousel-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/highlight-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/highlight-display.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javascript/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/post-link.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/post-new.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/make.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/new-post.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/new-post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/posts-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/posts-display.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/related-recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/related-recipes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/new-post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <workItem from="1714665771180" duration="12139000" />
       <workItem from="1714690035190" duration="2000000" />
       <workItem from="1714929801149" duration="12873000" />
-      <workItem from="1715009524186" duration="262000" />
+      <workItem from="1715009524186" duration="3862000" />
     </task>
     <servers />
   </component>

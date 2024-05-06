@@ -20,14 +20,12 @@
                 const slide = slidesContainer.querySelector(`#${slideId}`);
                 const slideTitle = slide.querySelector('.slide-title');
                 const slideText = slide.querySelector('.slide-text');
-                const tagsString = post.tags.join(',');
-                // Populate slide with post data
-                slide.setAttribute('href', `post.html?id=${post.id}&tags=${tagsString}`)
+
+                slide.setAttribute('href', `single-post.html?id=${post.id}`)
                 slideTitle.textContent = post.title;
-                // Truncate text to 200 characters and add "..." if necessary
+                // Truncate text to 200 characters and add "..."
                 slideText.textContent = post.body.length > 200 ? post.body.substring(0, 200) + '...' : post.body;
 
-                // Set image URL
                 if (post.media && post.media.url) {
                     slide.style.backgroundImage = `url(${post.media.url})`;
                     slide.style.backgroundRepeat = 'no-repeat';

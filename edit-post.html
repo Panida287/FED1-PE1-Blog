@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="css/new-post.css"/>
     <link rel="stylesheet" href="css/admin-bg-header.css"/>
     <title>Edit post</title>
+    <script src="javascript/edit-post.js" defer></script>
+    <script src="javascript/new-post.js" defer></script>
+    <script src="javascript/admin-header.js" defer></script>
     <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,11 +34,18 @@
             <h3>admin</h3>
         </a>
         <div class="user">
-            <div class="avatar"></div>
-            <p class="username">Panida</p>
+            <div id="avatar" class="avatar"></div>
+            <p id="username" class="username">Panida</p>
             <button id="logout-btn" aria-label="click to logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
+        </div>
+    </div>
+    <div id="logout-box">
+        <h4>Do you want to logout?</h4>
+        <div class="yes-no-btns-container">
+            <button id="logout-confirm" class="btn-black">yes</button>
+            <button id="logout-abort" class="btn-black">no</button>
         </div>
     </div>
 </header>
@@ -46,8 +56,8 @@
             < Back to admin
         </button>
     </div>
-    <h2>Edit blog post</h2>
-    <form id="blog-post-form">
+    <h2>edit Post</h2>
+    <form id="edit-form">
         <div class="title">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
@@ -61,17 +71,38 @@
             <textarea id="body" name="content" rows="4" cols="50" required></textarea><br><br>
         </div>
         <div class="tags">
-            <label for="tags">tags:</label>
+            <label for="tags">Tags:</label>
             <input type="text" id="tags" name="tags">
         </div>
         <div class="btns-container">
-            <button class="btn-black">preview</button>
-            <button class="btn-black">save</button>
-            <button class="btn-red">clear</button>
+            <button id="preview-btn" class="btn-black">preview</button>
+            <button type="submit" class="btn-black">post</button>
         </div>
     </form>
 
+    <div id="overlay"></div>
+
+    <div id="preview">
+        <h3 id="preview-title"></h3>
+        <div id="preview-img"></div>
+        <p id="preview-body"></p>
+        <div class="btns-container">
+            <button id="preview-close-btn" class="btn-black">close</button>
+        </div>
+    </div>
+
+    <div id="post-success">
+        <h4>
+            New blog has been posted!
+        </h4>
+        <button id="success-close-btn" class="btn-black">close</button>
+    </div>
 </main>
 
 </body>
+
+<!--Added script here due to using the same js as new-post but different method for API to avoid error line-->
+<script>
+    editFormData.addEventListener('submit', handleFormSubmission("PUT", "edit-post"));
+</script>
 </html>
