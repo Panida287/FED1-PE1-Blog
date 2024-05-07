@@ -41,7 +41,7 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
                 const readMoreButton = document.createElement('button');
                 readMoreButton.textContent = 'Read more';
                 readMoreButton.addEventListener('click', () => {
-                    window.location.href = `post.html?id=${post.id}&tags=${tagsString}`;
+                    window.location.href = `single-post.html?id=${post.id}&tags=${tagsString}`;
                 });
                 contentBody.appendChild(readMoreButton);
             }
