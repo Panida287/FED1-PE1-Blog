@@ -6,12 +6,14 @@
     <meta name="Mum, how do I...?" content="cooking good is cooking mum's way"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta property="og:image" content="assets/favicon_io"/>
-    <link rel="icon" type="image/png" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png"/>
-    <link rel="stylesheet" href="../css/styles.css"/>
-    <link rel="stylesheet" href="../css/post-public.css"/>
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/single-post.css"/>
     <title>Mum, how do I...?</title>
+    <script src="javascript/link-single-post.js" defer></script>
+    <script src="javascript/related-recipes.js" defer></script>
     <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +26,9 @@
 <header>
 
     <div class="header">
-        <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="../assets/logo.png">
+        <img class="logo" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
         <nav>
-            <a href="../index.html" aria-label="click to go to homepage">
+            <a href="index.html" aria-label="click to go to homepage">
                 home
             </a>
             <a href="#" aria-label="click to go to blog page">
@@ -49,20 +51,10 @@
 
     <div class="main-content">
         <div class="blog-display">
-            <h3>
-                Title
-            </h3>
-            <p class="date-time">date/time</p>
-            <!--div to be changed into img on js file when ready with api-->
+            <h3 class="title"></h3>
+            <p class="date-time"></p>
             <div class="content-img"></div>
-            <p class="content-body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod urna vel augue fermentum
-                tincidunt. Proin commodo metus quis felis pretium consectetur. Sed condimentum fermentum dolor, sed
-                ultricies massa interdum vel. Vivamus in nisi nec odio convallis dapibus. Sed nec lectus sed sem
-                suscipit tristique. Nullam non dui a nibh suscipit pulvinar. Suspendisse potenti. Vestibulum hendrerit
-                dui at nisi tristique, sed fringilla nunc ullamcorper. Sed tempus tortor at nisi fermentum, ut bibendum
-                orci scelerisque. In hac habitasse platea dictumst.
-            </p>
+            <p class="content-body"></p>
         </div>
         <div class="recipe-container">
             <h3>
@@ -70,9 +62,7 @@
             </h3>
             <div class="recipe">
                 <div class="recipe-header">
-                    <h3>
-                        recipe title
-                    </h3>
+                    <h3 class="recipe-title title"></h3>
                     <div class="serving-info">
                         <p>Serves: 12</p>
                         <p>Prep time: 40 minutes</p>
@@ -81,8 +71,7 @@
                 </div>
                 <div class="recipe-detail">
                     <div class="recipe-left-column">
-                        <!--div to be changed into img on js file when ready with api-->
-                        <div class="recipe-img"></div>
+                        <div class="recipe-img img"></div>
                         <div class="ingredients">
                             <p>
                                 ingredients
@@ -138,19 +127,18 @@
                 <div class="avatar-img"></div>
             </div>
             <div class="author-detail">
-                <h4 class="author-name">Panida</h4>
-                <p class="bio">I'm a boss ass bitch, bitch, bitch, bitch, bitch, bitch. I'm a boss ass bitch, bitch,
-                    bitch, bitch, bitch, bitch.</p>
+                <h4 class="author-name"></h4>
+                <p class="bio"></p>
             </div>
             <div class="social-media">
                 <a href="#" aria-label="click to go to facebook page">
-                    <img class="social-media-icon" alt="facebook-icon" src="../assets/social-media/facebook.png">
+                    <img class="social-media-icon" alt="facebook-icon" src="assets/social-media/facebook.png">
                 </a>
                 <a href="#" aria-label="click to go to instagram page">
-                    <img class="social-media-icon" alt="instagram-icon" src="../assets/social-media/instagram.png">
+                    <img class="social-media-icon" alt="instagram-icon" src="assets/social-media/instagram.png">
                 </a>
                 <a href="#" aria-label="click to go to pinterest page">
-                    <img class="social-media-icon" alt="interest-icon" src="../assets/social-media/pinterest.png">
+                    <img class="social-media-icon" alt="interest-icon" src="assets/social-media/pinterest.png">
                 </a>
             </div>
         </div>
@@ -158,35 +146,14 @@
             <h3>
                 Related recipes
             </h3>
-            <div class="related-display">
-                <div class="related-content">
-                    <a class="related-thumbnail">
-                    </a>
-                    <h4>Title</h4>
-                </div>
-                <div class="related-content">
-                    <a class="related-thumbnail">
-                    </a>
-                    <h4>Title</h4>
-                </div>
-                <div class="related-content">
-                    <a class="related-thumbnail">
-                    </a>
-                    <h4>Title</h4>
-                </div>
-                <div class="related-content">
-                    <a class="related-thumbnail">
-                    </a>
-                    <h4>Title</h4>
-                </div>
-            </div>
+            <div class="related-content"></div>
         </div>
     </div>
 
 </main>
 
 <footer>
-    <img class="logo-footer" alt="logo" aria-label="logo of mum, how do I...?" src="../assets/logo.png">
+    <img class="logo-footer" alt="logo" aria-label="logo of mum, how do I...?" src="assets/logo.png">
     <div class="subscribe-footer">
         <label for="email-input" id="email-input-label">
             Stay updated
@@ -200,13 +167,13 @@
         <h4>Follow us</h4>
         <div class="social-media-icon-container">
             <a href="#" aria-label="click to go to facebook page">
-                <img class="social-media-icon" alt="facebook-icon" src="../assets/social-media/facebook.png">
+                <img class="social-media-icon" alt="facebook-icon" src="assets/social-media/facebook.png">
             </a>
             <a href="#" aria-label="click to go to instagram page">
-                <img class="social-media-icon" alt="instagram-icon" src="../assets/social-media/instagram.png">
+                <img class="social-media-icon" alt="instagram-icon" src="assets/social-media/instagram.png">
             </a>
             <a href="#" aria-label="click to go to pinterest page">
-                <img class="social-media-icon" alt="interest-icon" src="../assets/social-media/pinterest.png">
+                <img class="social-media-icon" alt="interest-icon" src="assets/social-media/pinterest.png">
             </a>
         </div>
     </div>

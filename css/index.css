@@ -55,6 +55,7 @@
     display: flex;
     margin: 40px;
     gap: 20px;
+    justify-content: center;
 }
 
 .about {
@@ -89,31 +90,40 @@
 
 /*carousel starts here*/
 
-.carousel-container h3 {
+.carousel-container > h3 {
     font-family: beau rivage, sans-serif;
     font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .carousel-container {
     display: flex;
     flex-direction: column;
+    width: 700px;
+    justify-content: flex-start;
     align-items: center;
-    width: 60%;
+    margin: 0;
+}
+
+.carousel-display {
+    display: flex;
+    justify-content: center;
 }
 
 .carousel {
     height: 390px;
     width: 100%;
-    margin: 20px;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
+
 
 .slide {
     position: absolute;
     width: 100%;
+    max-width: 700px;
     height: 100%;
-    background: aqua;
-    left: 0;
     cursor: pointer;
     opacity: 0;
     transition: 300ms opacity ease-in-out;
@@ -153,6 +163,7 @@
 .arrow-container {
     display: flex;
     gap: 80px;
+    margin-top: 20px;
 }
 
 .arrow-btn {
@@ -210,7 +221,6 @@
 }
 
 .highlight-thumbnail {
-    background: aqua;
     border-radius: 50%;
     width: 200px;
     height: 200px;
@@ -235,8 +245,9 @@
 
 .main-contents-display {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto;
+    width: 100%;
     justify-items: center;
     align-items: center;
 }
@@ -248,6 +259,9 @@
     text-decoration: none;
     justify-items: center;
     align-items: center;
+    height: 370px;
+    box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
+    margin: 20px;
 }
 
 .main-contents-thumbnail {
@@ -255,6 +269,7 @@
     height: 225px;
     background: bisque;
     position: relative;
+    margin-bottom: 16px;
 }
 
 .main-contents-overlay {
@@ -277,12 +292,15 @@
     font-family: "Bebas Neue", sans-serif;
 }
 
-.main-contents-container p {
+.main-contents-container > p {
     font-family: "bitter", sans-serif;
     font-size: 14px;
     color: black;
-    padding-top: 16px;
     width: 225px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 20%;
 }
 
 /*main contents end here*/

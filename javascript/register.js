@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Prevent form submission
 
         // Retrieve form data
-        const formData = new FormData(form);
-        const email = formData.get('email');
-        const username = formData.get('username');
-        const password = formData.get('password');
-        const repeatPassword = formData.get('repeat-password');
-        const avatar = formData.get('avatar');
-        const bio = formData.get('bio');
+        const email = document.getElementById('email').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const repeatPassword = document.getElementById('repeat-password').value;
+        const avatar = document.getElementById('avatar').value;
+        const bio = document.getElementById('bio').value;
 
         // Check if passwords match
         if (password !== repeatPassword) {
@@ -28,11 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
             name: username,
             email: email,
             password: password,
-            bio: bio || '', // Optional
+            bio: bio || '',
             avatar: {
-                url: avatar || '', // Optional
-            }
+                url: avatar || '',
+                alt: ''
+            },
         };
+
 
         // Make POST request
         fetch('https://v2.api.noroff.dev/auth/register', {

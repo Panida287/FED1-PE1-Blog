@@ -21,8 +21,9 @@ document.getElementById('form').addEventListener('submit', function(event) {
             console.log(data);
             // If login successful, store data in local storage
             localStorage.setItem('userData', JSON.stringify(data));
+            localStorage.setItem('accessToken', data.data.accessToken);
             // Redirect or perform other actions
-            window.location.href = '../post/admin.html';
+            window.location.href = 'admin.html';
         })
         .catch(error => {
             console.error('Error:', error.message);
