@@ -105,7 +105,20 @@ prevBtn.addEventListener('click', prevPage);
 document.querySelectorAll('.category-container button').forEach(button => {
     button.addEventListener('click', () => {
         const tag = button.id;
-        mainContents.innerHTML = ''; // Clear existing content
-        fetchData(tag); // Fetch data with the selected tag
+        const header = document.getElementById('header');
+        header.innerText = capitalizeFirstLetter(tag); // Capitalize first letter
+        mainContents.innerHTML = '';
+        fetchData(tag);
     });
+});
+
+// Function to capitalize the first letter of a string
+function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const viewAllButton = document.getElementById('view-all');
+viewAllButton.addEventListener('click', () => {
+    mainContents.innerHTML = ''; // Clear existing content
+    fetchData(); // Fetch all posts
 });

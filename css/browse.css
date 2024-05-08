@@ -49,3 +49,14 @@
     background: url('../assets/background/main-course.jpeg') no-repeat center/cover;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-contents {
+    margin-top: 40px;
+}
+
+
