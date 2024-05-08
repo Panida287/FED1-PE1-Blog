@@ -1,0 +1,62 @@
+.category-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 40px 0;
+    overflow: hidden;
+}
+
+#asian,
+#salad,
+#soup,
+#pasta,
+#main-course {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+}
+
+#asian-img,
+#salad-img,
+#soup-img,
+#pasta-img,
+#main-course-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+#asian-img {
+    background: url('../assets/background/asian.jpeg') no-repeat center/cover;
+}
+
+#salad-img {
+    background: url('../assets/background/salad.jpeg') no-repeat center/cover;
+}
+
+#soup-img {
+    background: url('../assets/background/soup.jpeg') no-repeat center/cover;
+}
+
+#pasta-img {
+    background: url('../assets/background/pasta.jpeg') no-repeat center/cover;
+}
+
+#main-course-img {
+    background: url('../assets/background/main-course.jpeg') no-repeat center/cover;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-contents {
+    margin-top: 40px;
+}
+
+
