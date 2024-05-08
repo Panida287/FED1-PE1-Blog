@@ -230,14 +230,13 @@
 .main-contents {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
 .main-contents h3 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 20px;
+    font-family: beau rivage, sans-serif;
+    font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -262,6 +261,7 @@
     height: 370px;
     box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
     margin: 20px;
+    background: white;
 }
 
 .main-contents-thumbnail {

@@ -1,12 +1,17 @@
 const mainContents = document.querySelector('.main-contents-display');
-const blog = ('https://v2.api.noroff.dev/blog/posts/panpae');
-const limit = 6;
+const blog = 'https://v2.api.noroff.dev/blog/posts/panpae';
+let limit = 12;
 let page = 1;
 
-// Fetch data from API
-const fetchData = () => {
-    fetch(`${blog}?limit=${limit}&page=${page}`)
-        .then(response => response.json())
+const fetchData = (tag = '') => {
+    const apiUrl = `${blog}?limit=${limit}&page=${page}${tag ? `&_tag=${tag}` : ''}`;
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
         .then(data => {
             const posts = data.data;
             const currentPage = data.meta.currentPage;
@@ -14,8 +19,8 @@ const fetchData = () => {
             const isLastPage = data.meta.isLastPage;
 
             const updateButtonsStages = () => {
-               prevBtn.disabled = isFirstPage;
-               nextBtn.disabled = isLastPage;
+                prevBtn.disabled = isFirstPage;
+                nextBtn.disabled = isLastPage;
             }
             updateButtonsStages();
 
@@ -72,23 +77,23 @@ const fetchData = () => {
             // Append the error message to the main contents display area
             mainContents.appendChild(errorElement);
         });
-}
+};
 
-fetchData()
+fetchData();
 
-//pagination functionality
+// Pagination functionality
 const nextBtn = document.getElementById('next');
 const prevBtn = document.getElementById('previous');
 const nextPage = () => {
     page++; // Increment page number
-    // Clear exiting content before fetching new data
+    // Clear existing content before fetching new data
     mainContents.innerHTML = '';
     fetchData();
-}
+};
 const prevPage = () => {
     if (page > 1) {
         page--;
-        mainContents.innerHTML ='';
+        mainContents.innerHTML = '';
         fetchData();
     }
 };
@@ -96,3 +101,11 @@ const prevPage = () => {
 nextBtn.addEventListener('click', nextPage);
 prevBtn.addEventListener('click', prevPage);
 
+// Filter functionality
+document.querySelectorAll('.category-container button').forEach(button => {
+    button.addEventListener('click', () => {
+        const tag = button.id;
+        mainContents.innerHTML = ''; // Clear existing content
+        fetchData(tag); // Fetch data with the selected tag
+    });
+});

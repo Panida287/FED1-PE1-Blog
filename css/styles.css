@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #FFFEF6;
+    background: #FFFCE4;
 }
 
 /*components start here*/
@@ -103,6 +103,7 @@ nav {
 #search-input {
     outline: none;
     border-radius: 16px;
+    padding: 4px;
 }
 
 /*nav ends here*/
