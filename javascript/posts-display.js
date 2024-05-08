@@ -119,6 +119,9 @@ function capitalizeFirstLetter(str) {
 
 const viewAllButton = document.getElementById('view-all');
 viewAllButton.addEventListener('click', () => {
-    mainContents.innerHTML = ''; // Clear existing content
+    mainContents.innerHTML = '';
+    const header = document.getElementById('header');
+    header.innerText = 'View all';
+    // Clear existing content
     fetchData(); // Fetch all posts
 });
