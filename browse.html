@@ -11,11 +11,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/browse.css"/>
     <title>Mum, how do I...?</title>
     <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
-    <script src="javascript/banner-carousel.js" defer></script>
-    <script src="javascript/highlight-display.js" defer></script>
-    <script src="javascript/carousel-display.js" defer></script>
+    <script src="javascript/posts-display.js" defer></script>
+    <script src="javascript/filter.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
@@ -68,85 +68,53 @@
 
 <main>
 
-    <div class="top-container">
-        <div class="about">
-            <h3>
-                about
+    <div class="category-container">
+        <button id="asian">
+            <span id="asian-img">
+            </span>
+            Asian
+        </button>
+        <button id="salad">
+            <span id="salad-img">
+            </span>
+            salad
+        </button>
+        <button id="soup">
+            <span id="soup-img">
+            </span>
+            soup
+        </button>
+        <button id="pasta">
+            <span id="pasta-img">
+            </span>
+            pasta
+        </button>
+        <button id="main-course">
+            <span id="main-course-img">
+            </span>
+            main-course
+        </button>
+    </div>
+    <button class="btn-black" id="view-all">
+        view all
+    </button>
+        <div class="main-contents">
+            <h3 id="header">
+                All recipes
             </h3>
-            <p>
-                Welcome to "Mum, How Do I..?", your virtual kitchen companion where cherished family recipes and
-                culinary
-                wisdom come together. Imagine being far from home, craving the comforting flavors of your childhood
-                favorites, and reaching for the phone to call Mum for guidance. Our blog is a tribute to those heartfelt
-                moments, celebrating the timeless tradition of passing down recipes from generation to generation. With
-                "Cooking good is cooking Mum's way" as our motto, we invite you to embark on a journey filled with
-                nostalgia, warmth, and the joy of recreating beloved dishes that taste just like home. Let's cook
-                together,
-                Mum's way.
-            </p>
-            <div class="social-media">
-                <a href="#" aria-label="click to go to facebook page">
-                    <img class="social-media-icon" alt="facebook-icon" src="assets/social-media/facebook.png">
-                </a>
-                <a href="#" aria-label="click to go to instagram page">
-                    <img class="social-media-icon" alt="instagram-icon" src="assets/social-media/instagram.png">
-                </a>
-                <a href="#" aria-label="click to go to pinterest page">
-                    <img class="social-media-icon" alt="interest-icon" src="assets/social-media/pinterest.png">
-                </a>
-            </div>
-        </div>
-        <div class="carousel-container">
-            <h3>
-                New recipes
-            </h3>
-            <div class="carousel" data-carousel>
-                <div class="carousel-display" data-slides>
-                    <a href="#" class="slide" id="slide-1">
-                        <div class="slide-overlay">
-                            <h3 class="slide-title"></h3>
-                            <p class="slide-text"></p>
-                        </div>
-                    </a>
-                    <a href="#" class="slide" id="slide-2">
-                        <div class="slide-overlay">
-                            <h3 class="slide-title"></h3>
-                            <p class="slide-text"></p>
-                        </div>
-                    </a>
-                    <a href="#" class="slide" id="slide-3">
-                        <div class="slide-overlay">
-                            <h3 class="slide-title"></h3>
-                            <p class="slide-text"></p>
-                        </div>
-                    </a>
+            <div class="main-contents">
+                <div class="main-contents-display"></div>
+                <div id="pagination">
+                    <button id="previous">
+                        < Previous
+                    </button>
+                    <p id="current-page"></p>
+                    <button id="next">
+                        Next >
+                    </button>
                 </div>
             </div>
-            <div class="arrow-container">
-                <button class="arrow-btn prev" data-carousel-button="prev">
-                    <img alt="left-arrow" src="assets/carousel-btns/prev.png">
-                </button>
-                <button class="arrow-btn next" data-carousel-button="next">
-                    <img alt="right-arrow" src="assets/carousel-btns/next.png">
-                </button>
-            </div>
         </div>
-    </div>
-
-    <div class="contents">
-        <div class="highlight">
-            <h3>
-                Highlight
-            </h3>
-            <div class="highlight-display"></div>
-        </div>
-        <div class="main-contents">
-            <h3>
-                More recipes
-            </h3>
-            <div class="main-contents-display"></div>
-        </div>
-    </div>
 </main>
 
 <footer>
