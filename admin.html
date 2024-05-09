@@ -53,12 +53,18 @@
 <main>
 
     <div class="buttons">
-        <button id="sort" class="btn-black">
-            sort by
-        </button>
-        <button id="filter" class="btn-black">
-            filter by
-        </button>
+        <div class="filter-container">
+            <button id="filter" class="btn-black">
+                filter by
+            </button>
+            <ul class="filter-dropdown">
+                <li id="asian">asian</li>
+                <li id="soup">soup</li>
+                <li id="salad">salad</li>
+                <li id="pasta">pasta</li>
+                <li id="main-course">main-course</li>
+            </ul>
+        </div>
         <button class="btn-black" id="post-new">
             + post new
         </button>
@@ -89,6 +95,15 @@
                 No
             </button>
         </div>
+    </div>
+    <div id="pagination">
+        <button id="previous">
+            < Previous
+        </button>
+        <p id="current-page"></p>
+        <button id="next">
+            Next >
+        </button>
     </div>
 
 </main>

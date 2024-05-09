@@ -109,5 +109,47 @@ h1 {
     gap: 40px;
 }
 
+/*pagination*/
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+    margin: 40px;
+}
+
+/*filter dropdown*/
+
+.filter-dropdown {
+    border: 1px solid black;
+    background-color: white;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+}
+
+.filter-dropdown li {
+    cursor: pointer;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-dropdown li:hover {
+    background: black;
+    color: white;
+}
+
+
 
 

@@ -38,13 +38,13 @@ body {
 
 label {
     font-family: "Bebas Neue", sans-serif;
+    font-size: 14px;
 }
 
 input {
     width: 250px;
     outline: none;
-    border-radius: 8px;
-    height: 30px;
+    height: 25px;
     padding: 4px;
 }
 
