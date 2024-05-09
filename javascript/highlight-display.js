@@ -76,6 +76,33 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
             }
             contents.appendChild(contentBody);
         });
+
+        const carousel = document.querySelector('[data-carousel]');
+        const slidesContainer = carousel.querySelector('[data-slides]');
+
+        const latestPosts = data.data.slice(0, 3);
+
+        // Iterate over the latest posts and populate slides
+        latestPosts.forEach((post, index) => {
+            const slideId = `slide-${index + 1}`;
+            const slide = slidesContainer.querySelector(`#${slideId}`);
+            const slideTitle = slide.querySelector('.slide-title');
+            const slideText = slide.querySelector('.slide-text');
+            const tagsString = post.tags;
+
+            slide.setAttribute('href', `single-post.html?id=${post.id}&tags=${tagsString}`)
+            slideTitle.textContent = post.title;
+            // Truncate text to 200 characters and add "..."
+            slideText.textContent = post.body.length > 200 ? post.body.substring(0, 200) + '...' : post.body;
+
+            if (post.media && post.media.url) {
+                slide.style.backgroundImage = `url(${post.media.url})`;
+                slide.style.backgroundRepeat = 'no-repeat';
+                slide.style.backgroundSize = 'cover';
+                slide.style.backgroundPosition = 'center';
+            }
+        });
+
     })
     .catch(error => {
         console.error('Error fetching or processing data:', error.message);
@@ -83,5 +110,5 @@ fetch('https://v2.api.noroff.dev/blog/posts/panpae')
         errorElement.classList.add('error-fetching-data');
         errorElement.textContent = error.message;
         // Append the error message to the highlight display area
-        highlightDisplay.appendChild(errorElement);
+        mainContents.appendChild(errorElement);
     });
