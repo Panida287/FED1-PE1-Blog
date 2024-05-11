@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f266e89c-9390-42fc-aa10-b86c55dc2d5b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/login-register.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login-register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript/admin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,12 +67,24 @@
       <option name="presentableId" value="Default" />
       <updated>1715119991230</updated>
       <workItem from="1715201829472" duration="6811000" />
-      <workItem from="1715252340873" duration="5651000" />
+      <workItem from="1715252340873" duration="5824000" />
+      <workItem from="1715266076433" duration="2219000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
