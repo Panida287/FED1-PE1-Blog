@@ -1,8 +1,15 @@
 .buttons {
     display: flex;
     width: 100%;
+    height: 38px;
     justify-content: center;
+    margin: 20px;
     gap: 20px;
+}
+
+#post-new {
+    height: 38px;
+    margin: 0;
 }
 
 .search {
@@ -110,6 +117,7 @@ h1 {
     gap: 40px;
 }
 
+/*pagination*/
 #pagination {
     display: flex;
     justify-content: center;
@@ -117,6 +125,46 @@ h1 {
     width: 100%;
     gap: 40px;
     margin: 40px;
+}
+
+/*filter dropdown*/
+
+#filter-dropdown {
+    display: none;
+    border: 1px solid black;
+    background-color: white;
+    list-style-type: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 8px;
+    padding: 0;
+    z-index: 2;
+    width: 120px;
+}
+
+#filter-dropdown li {
+    width: 100%;
+    height: 30px;
+    padding: 0;
+}
+
+.filter-btn {
+    cursor: pointer;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-btn:hover {
+    background: black;
+    color: white;
 }
 
 

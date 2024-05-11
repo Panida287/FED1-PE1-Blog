@@ -53,12 +53,31 @@
 <main>
 
     <div class="buttons">
-        <button id="sort" class="btn-black">
-            sort by
-        </button>
-        <button id="filter" class="btn-black">
-            filter by
-        </button>
+        <div class="filter-container">
+            <button id="filter" class="btn-black">
+                filter by
+            </button>
+            <ul id="filter-dropdown">
+                <li>
+                    <button class="filter-btn" id="asian">asian</button>
+                </li>
+                <li>
+                    <button class="filter-btn" id="salad">salad</button>
+                </li>
+                <li>
+                    <button class="filter-btn" id="soup">soup</button>
+                </li>
+                <li>
+                    <button class="filter-btn" id="pasta">pasta</button>
+                </li>
+                <li>
+                    <button class="filter-btn" id="main-course">main-course</button>
+                </li>
+                <li>
+                    <button class="filter-btn" id="view-all">view all</button>
+                </li>
+            </ul>
+        </div>
         <button class="btn-black" id="post-new">
             + post new
         </button>
