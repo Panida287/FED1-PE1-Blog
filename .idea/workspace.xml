@@ -72,7 +72,7 @@
       <workItem from="1715201829472" duration="6811000" />
       <workItem from="1715252340873" duration="5824000" />
       <workItem from="1715266076433" duration="2219000" />
-      <workItem from="1715435211486" duration="4256000" />
+      <workItem from="1715435211486" duration="9985000" />
     </task>
     <servers />
   </component>
@@ -97,6 +97,18 @@
           <url>file://$PROJECT_DIR$/javascript/posts-display.js</url>
           <line>23</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/javascript/admin.js</url>
+          <line>37</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/javascript/admin.js</url>
+          <line>264</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

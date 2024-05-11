@@ -3,9 +3,12 @@ const accessToken = localStorage.getItem('accessToken');
 const blog = 'https://v2.api.noroff.dev/blog/posts/panpae';
 const limit = 6;
 let page = 1;
+let currentSearchTerm = '';
+let currentTag = '';
 
-const fetchData = (tag = '') => {
-    const apiUrl = `${blog}?limit=${limit}&page=${page}${tag ? `&_tag=${tag}` : ''}`;
+
+const fetchData = (tag = '', searchTerm = '') => {
+    const apiUrl = `${blog}?limit=${limit}&page=${page}${tag?`&_tag=${tag}` : ''}`;
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
@@ -14,10 +17,15 @@ const fetchData = (tag = '') => {
             return response.json();
         })
         .then(data => {
-            const posts = data.data;
+            let posts = data.data;
             const currentPage = data.meta.currentPage;
             const isFirstPage = data.meta.isFirstPage;
             const isLastPage = data.meta.isLastPage;
+
+            if (searchTerm) {
+                posts = posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
+            }
+            postsContainer.innerHTML = '';
 
             const updateButtonsStages = () => {
                 prevBtn.disabled = isFirstPage;
@@ -227,11 +235,12 @@ filterBtn.addEventListener('click', (e) => {
 // Filter functionality
 document.querySelectorAll('#filter-dropdown button').forEach(button => {
     button.addEventListener('click', () => {
-        const tag = button.id;
+        currentTag = button.id;
         const header = document.querySelector('.post-header');
-        header.innerText = (tag);
+        header.innerText = (currentTag);
+        currentSearchTerm = ''; // Reset search when filtering
         postsContainer.innerHTML = '';
-        fetchData(tag);
+        fetchData(currentTag, currentSearchTerm);
     });
 });
 
@@ -241,5 +250,27 @@ viewAllButton.addEventListener('click', () => {
     const header = document.querySelector('.post-header');
     header.innerText = 'all posts';
     // Clear existing content
-    fetchData(); // Fetch all posts
+    fetchData();
 });
+
+//search function
+
+const searchBtn = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+
+searchBtn.addEventListener('click', () => {
+    currentSearchTerm = searchInput.value;
+    const header = document.querySelector('.post-header');
+    header.innerText = (currentSearchTerm)
+    currentTag = ''; // Reset tag when searching
+    fetchData(currentTag, currentSearchTerm);
+});
+
+// add an event listener for "Enter" key press in the search input
+searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        searchBtn.click();
+    }
+});
+
+
