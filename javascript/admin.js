@@ -1,12 +1,18 @@
 const postsContainer = document.getElementById('posts-container');
 const accessToken = localStorage.getItem('accessToken');
+const blog = 'https://v2.api.noroff.dev/blog/posts/panpae';
 const limit = 6;
 let page = 1;
 
 const fetchData = (tag = '') => {
-    const url = tag ? `https://v2.api.noroff.dev/blog/posts/panpae?_tag=${tag}&limit=${limit}&page=${page}` : `https://v2.api.noroff.dev/blog/posts/panpae?limit=${limit}&page=${page}`;
-    fetch(url)
-        .then(res => res.json())
+    const apiUrl = `${blog}?limit=${limit}&page=${page}${tag ? `&_tag=${tag}` : ''}`;
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
         .then(data => {
             const posts = data.data;
             const currentPage = data.meta.currentPage;
@@ -29,7 +35,6 @@ const fetchData = (tag = '') => {
                 contents.classList.add('post');
 
                 postsContainer.appendChild(contents);
-
                 const image = document.createElement('div');
                 image.classList.add('img');
                 image.style.backgroundImage = `url(${post.media.url})`;
@@ -203,26 +208,38 @@ function formatDateTime(dateTimeString) {
     return date.toLocaleString(); // Convert date to local date and time format
 }
 
-// Handle filtering by tags
-document.querySelectorAll('.category-container button').forEach(button => {
-    button.addEventListener('click', () => {
-        const tag = button.id;
-        const header = document.getElementById('header');
-        header.innerText = tag.charAt(0).toUpperCase() + tag.slice(1); // Transform only the first letter
-        fetchData(tag); // Fetch data with the selected tag
-    });
-});
-
-// View all button functionality
-const viewAllBtn = document.getElementById('view-all');
-viewAllBtn.addEventListener('click', () => {
-    const header = document.getElementById('header');
-    header.innerText = 'All Posts';
-    fetchData(); // Fetch all posts
-});
-
 // Create new post button functionality
 const postNew = document.getElementById('post-new');
 postNew.addEventListener('click', () => {
     window.location.href = 'new-post.html';
+});
+
+// show/hide dropdown list
+
+const filterBtn = document.getElementById('filter');
+const dropdown = document.getElementById('filter-dropdown');
+filterBtn.addEventListener('click', (e) => {
+    // Toggle display style between 'none' and 'flex'
+    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+});
+
+
+// Filter functionality
+document.querySelectorAll('#filter-dropdown button').forEach(button => {
+    button.addEventListener('click', () => {
+        const tag = button.id;
+        const header = document.querySelector('.post-header');
+        header.innerText = (tag);
+        postsContainer.innerHTML = '';
+        fetchData(tag);
+    });
+});
+
+const viewAllButton = document.getElementById('view-all');
+viewAllButton.addEventListener('click', () => {
+    postsContainer.innerHTML = '';
+    const header = document.querySelector('.post-header');
+    header.innerText = 'all posts';
+    // Clear existing content
+    fetchData(); // Fetch all posts
 });
