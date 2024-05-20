@@ -1,86 +1,94 @@
+
+import { getQueryParamValue } from './utils.js';
+
 const relatedContent = document.querySelector('.related-content');
+const blogUrl = 'https://v2.api.noroff.dev/blog/posts/panpae';
 
-// Function to extract query parameter value
-function getQueryParamValue(parameter) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const paramValue = urlParams.getAll(parameter); // Use getAll to retrieve all values for a parameter
-    return Array.isArray(paramValue) ? paramValue : [paramValue]; // Ensure it always returns an array
-}
+// Extract the 'id' parameter
+const postId = getQueryParamValue('id');
 
-// Extract the 'tags' query parameter value
-const postTags = getQueryParamValue('tags');
+// Function to fetch the current post and get its tags
+function fetchCurrentPost(postId) {
+    const apiUrl = `${blogUrl}/${postId}`;
 
-// Function to fetch related posts with similar tags
-function fetchRelatedPosts(tags, currentPostId) {
-    console.log('Fetching related posts with tags:', tags);
-    const apiUrl = `${blog}panpae`;
-    const tagQuery = `tags_like=${tags.join('&tags_like=')}`; // Use 'tags_like' to match similar tags
-    return fetch(`${apiUrl}?${tagQuery}`) // Fetch posts with similar tags
+    return fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Failed to fetch the current post');
             }
             return response.json();
         })
         .then(data => {
-            console.log('Fetched related posts:', data);
+            return data.data.tags;
+        })
+        .catch(error => {
+            console.error('Error fetching the current post:', error.message);
+        });
+}
+
+// Function to fetch related posts with similar tags
+function fetchRelatedPosts(tags, currentPostId) {
+    const apiUrl = `${blogUrl}`;
+
+    return fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch related posts');
+            }
+            return response.json();
+        })
+        .then(data => {
             return data.data.filter(post => post.id !== currentPostId && post.tags.some(tag => tags.includes(tag)));
         })
         .catch(error => {
-            console.error('Error fetching or processing data:', error.message);
+            console.error('Error fetching related posts:', error.message);
             const errorElement = document.createElement('div');
             errorElement.classList.add('error-fetching-data');
             errorElement.textContent = error.message;
-            // Append the error message to the display area
             relatedContent.appendChild(errorElement);
-            return []; // Return an empty array in case of error
+            return [];
         });
 }
 
 // Function to display related posts
 function displayRelatedPosts(relatedPosts) {
-    console.log('Displaying related posts:', relatedPosts);
-
-    // Clear existing content in the relatedContent element
     relatedContent.innerHTML = '';
 
-    const slicedRelatedPosts = relatedPosts.slice(0, 4);
+    if (relatedPosts.length === 0) {
+        relatedContent.innerHTML = '<p>No related recipes found</p>';
+        return;
+    }
 
-    slicedRelatedPosts.forEach(post => {
-        const tagsString = post.tags[0]
+    relatedPosts.slice(0, 4).forEach(post => {
+        const tagsString = post.tags.join(', ');
         const relatedPostImage = document.createElement('a');
         relatedPostImage.classList.add('related-thumbnail');
-        relatedPostImage.href = `post.html?id=${post.id}&tags=${tagsString}`;
+        relatedPostImage.href = `single-post.html?id=${post.id}&tags=${tagsString}`;
         relatedPostImage.style.backgroundImage = `url(${post.media.url})`;
         relatedPostImage.style.backgroundRepeat = 'no-repeat';
         relatedPostImage.style.backgroundSize = 'cover';
         relatedPostImage.style.backgroundPosition = 'center';
 
-        relatedContent.appendChild(relatedPostImage);
-
         const relatedPostTitle = document.createElement('h2');
         relatedPostTitle.textContent = post.title;
 
+        relatedContent.appendChild(relatedPostImage);
         relatedContent.appendChild(relatedPostTitle);
     });
 }
 
-// Fetch and display related posts
-if (postTags) {
-    console.log('Post tags found:', postTags);
-    fetchRelatedPosts(postTags, postId) // Pass the ID of the current post
-        .then(relatedPosts => {
-            // Display the related posts
-            displayRelatedPosts(relatedPosts);
+// Fetch and display related posts based on the current post's tags
+if (postId) {
+    fetchCurrentPost(postId)
+        .then(tags => {
+            if (tags && tags.length > 0) {
+                return fetchRelatedPosts(tags, postId);
+            } else {
+                throw new Error('No tags found for the current post');
+            }
         })
-        .catch(error => {
-            console.error('Error fetching or processing data:', error.message);
-            const errorElement = document.createElement('div');
-            errorElement.classList.add('error-fetching-data');
-            errorElement.textContent = error.message;
-            // Append the error message to the display area
-            relatedContent.appendChild(errorElement);
-        });
+        .then(relatedPosts => displayRelatedPosts(relatedPosts))
+        .catch(error => console.error('Error displaying related posts:', error.message));
 } else {
-    console.error('Post tags not found');
+    console.error('Post ID is missing');
 }
