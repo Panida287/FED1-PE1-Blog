@@ -6,9 +6,8 @@ let page = 1;
 let currentSearchTerm = '';
 let currentTag = '';
 
-
 const fetchData = (tag = '', searchTerm = '') => {
-    const apiUrl = `${blog}?limit=${limit}&page=${page}${tag?`&_tag=${tag}` : ''}`;
+    const apiUrl = `${blog}?limit=${limit}&page=${page}${tag ? `&_tag=${tag}` : ''}`;
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
@@ -25,16 +24,24 @@ const fetchData = (tag = '', searchTerm = '') => {
             if (searchTerm) {
                 posts = posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
             }
+
             postsContainer.innerHTML = '';
 
             const updateButtonsStages = () => {
-                prevBtn.disabled = isFirstPage;
-                nextBtn.disabled = isLastPage;
+                prevBtn.disabled = isFirstPage || searchTerm;
+                nextBtn.disabled = isLastPage || searchTerm;
             }
             updateButtonsStages();
 
             const currentPageNumber = document.getElementById('current-page');
             currentPageNumber.innerHTML = currentPage;
+
+            const header = document.querySelector('.post-header');
+            if (posts.length === 0) {
+                header.innerText = 'No post found';
+            } else {
+                header.innerText = currentSearchTerm || currentTag || 'all recipes';
+            }
 
             postsContainer.innerHTML = ''; // Clear existing content
 
@@ -76,7 +83,6 @@ const fetchData = (tag = '', searchTerm = '') => {
 
                 detailsContainer.appendChild(contentBody);
 
-
                 const userContainer = document.createElement('div');
                 userContainer.classList.add('user');
                 detailsContainer.appendChild(userContainer);
@@ -107,15 +113,15 @@ const fetchData = (tag = '', searchTerm = '') => {
                 contents.appendChild(btnsContainer);
 
                 btnsContainer.innerHTML = `
-        <button class="btn-black view-post-btn" aria-label="click to view post">
-            view post
-        </button>
-        <button class="btn-black edit-btn"  aria-label="click to edit post">
-            edit
-        </button>
-        <button class="btn-red delete-btn" aria-label="click to delete post">
-            delete
-        </button>`;
+                    <button class="btn-black view-post-btn" aria-label="click to view post">
+                        view post
+                    </button>
+                    <button class="btn-black edit-btn" aria-label="click to edit post">
+                        edit
+                    </button>
+                    <button class="btn-red delete-btn" aria-label="click to delete post">
+                        delete
+                    </button>`;
 
                 const viewPost = contents.querySelector('.view-post-btn');
                 viewPost.addEventListener('click', (e) => {
@@ -154,8 +160,6 @@ const fetchData = (tag = '', searchTerm = '') => {
                                 contents.remove();
                             })
                     });
-
-
                 });
 
                 const deleteAbortBtn = document.getElementById('delete-abort');
@@ -165,8 +169,7 @@ const fetchData = (tag = '', searchTerm = '') => {
                     const deleteDialog = document.getElementById('delete-dialog');
                     deleteDialog.style.display = 'none';
                     overlay.style.display = 'none';
-
-                })
+                });
 
                 function deletePost(postId) {
                     return fetch(`https://v2.api.noroff.dev/blog/posts/panpae/${postId}`, {
@@ -176,9 +179,6 @@ const fetchData = (tag = '', searchTerm = '') => {
                             "Authorization": `Bearer ${accessToken}`
                         },
                     })
-                        .then(data => {
-                            console.log('Post deleted successfully:', data);
-                        });
                 }
             });
         })
@@ -197,13 +197,15 @@ fetchData();
 const nextBtn = document.getElementById('next');
 const prevBtn = document.getElementById('previous');
 const nextPage = () => {
-    page++; // Increment page number
-    fetchData();
+    if (!currentSearchTerm) {
+        page++; // Increment page number
+        fetchData(currentTag, currentSearchTerm);
+    }
 }
 const prevPage = () => {
-    if (page > 1) {
+    if (!currentSearchTerm && page > 1) {
         page--;
-        fetchData();
+        fetchData(currentTag, currentSearchTerm);
     }
 };
 
@@ -223,24 +225,31 @@ postNew.addEventListener('click', () => {
 });
 
 // show/hide dropdown list
-
 const filterBtn = document.getElementById('filter');
 const dropdown = document.getElementById('filter-dropdown');
 filterBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent event from bubbling up to document
     // Toggle display style between 'none' and 'flex'
     dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
 });
 
+document.addEventListener('click', (e) => {
+    // Check if the clicked target is not the dropdown or the filter button
+    if (!filterBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+    }
+});
 
 // Filter functionality
-document.querySelectorAll('#filter-dropdown button').forEach(button => {
+document.querySelectorAll('#filter-dropdown button:not(#view-all)').forEach(button => {
     button.addEventListener('click', () => {
         currentTag = button.id;
         const header = document.querySelector('.post-header');
-        header.innerText = (currentTag);
+        header.innerText = currentTag;
         currentSearchTerm = ''; // Reset search when filtering
         postsContainer.innerHTML = '';
         fetchData(currentTag, currentSearchTerm);
+        dropdown.style.display = 'none'; // Hide dropdown after selecting a filter
     });
 });
 
@@ -248,29 +257,28 @@ const viewAllButton = document.getElementById('view-all');
 viewAllButton.addEventListener('click', () => {
     postsContainer.innerHTML = '';
     const header = document.querySelector('.post-header');
-    header.innerText = 'all posts';
+    header.innerText = 'all recipes';
     // Clear existing content
+    currentTag = ''; // Reset tag when viewing all posts
     fetchData();
+    dropdown.style.display = 'none'; // Hide dropdown after selecting 'view all'
 });
 
-//search function
-
+// Search function
 const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search-input');
 
 searchBtn.addEventListener('click', () => {
     currentSearchTerm = searchInput.value;
     const header = document.querySelector('.post-header');
-    header.innerText = (currentSearchTerm)
+    header.innerText = currentSearchTerm;
     currentTag = ''; // Reset tag when searching
     fetchData(currentTag, currentSearchTerm);
 });
 
-// add an event listener for "Enter" key press in the search input
+// Add an event listener for "Enter" key press in the search input
 searchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         searchBtn.click();
     }
 });
-
-

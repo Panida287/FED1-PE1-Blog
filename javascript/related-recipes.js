@@ -46,7 +46,6 @@ function displayRelatedPosts(relatedPosts) {
 
     const slicedRelatedPosts = relatedPosts.slice(0, 4);
 
-    // Loop through the related posts and display them
     slicedRelatedPosts.forEach(post => {
         const tagsString = post.tags[0]
         const relatedPostImage = document.createElement('a');

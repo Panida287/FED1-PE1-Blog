@@ -4,7 +4,6 @@ const formData = document.getElementById('blog-post-form');
 const previewBtn = document.getElementById('preview-btn');
 const backToAdmin = document.getElementById('back-to-admin');
 
-// Event listener for back to admin button
 backToAdmin.addEventListener('click', () => {
     window.location.href = 'admin.html';
 });
@@ -81,7 +80,6 @@ function isValidUrl(string) {
     }
 }
 
-// Event listener for preview button
 previewBtn.addEventListener('click', function(event) {
     event.preventDefault();
     const previewContent = document.getElementById('preview');

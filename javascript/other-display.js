@@ -1,7 +1,6 @@
 const highlightDisplay = document.querySelector('.highlight-display');
 const mainContents = document.querySelector('.main-contents-display');
 
-// Fetch data from API
 fetch('https://v2.api.noroff.dev/blog/posts/panpae')
     .then(response => {
         if (!response.ok) {

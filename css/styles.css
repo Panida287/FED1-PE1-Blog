@@ -94,16 +94,9 @@ nav {
     gap: 40px;
 }
 
-.search {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-#search-input {
-    outline: none;
-    border-radius: 16px;
-    padding: 4px;
+.search i {
+    text-decoration: none;
+    color: black;
 }
 
 /*nav ends here*/
