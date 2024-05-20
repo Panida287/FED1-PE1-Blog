@@ -65,14 +65,16 @@ export function createPostElement(post) {
     const words = post.body.split(' ');
     const truncatedText = words.slice(0, 10).join(' ');
     contentBody.innerHTML = truncatedText + '...<br><br>';
+    postElement.appendChild(contentBody);
 
     const readMoreButton = document.createElement('button');
     readMoreButton.textContent = 'Read more';
+    readMoreButton.classList.add('btn-black');
+    readMoreButton.classList.add('read-more');
     readMoreButton.addEventListener('click', () => {
         window.location.href = `single-post.html?id=${post.id}&tags=${tagsString}`;
     });
-    contentBody.appendChild(readMoreButton);
-    postElement.appendChild(contentBody);
+    postElement.appendChild(readMoreButton);
 
     return postElement;
 }
