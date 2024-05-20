@@ -91,9 +91,21 @@
         </div>
     </div>
 
-    <h1 class="post-header">all posts</h1>
+    <h1 class="post-header">all recipes</h1>
 
-    <div id="posts-container"></div>
+    <div id="main-container">
+        <div id="posts-container"></div>
+        <div id="pagination">
+            <button id="previous">
+                < Previous
+            </button>
+            <p id="current-page"></p>
+            <button id="next">
+                Next >
+            </button>
+        </div>
+    </div>
+    <div id="search-result-container"></div>
     <div id="delete-dialog">
         <h4>
             Post will be permanently deleted
@@ -109,16 +121,6 @@
             </button>
         </div>
     </div>
-    <div id="pagination">
-        <button id="previous">
-            < Previous
-        </button>
-        <p id="current-page"></p>
-        <button id="next">
-            Next >
-        </button>
-    </div>
-
 </main>
 
 </body>
