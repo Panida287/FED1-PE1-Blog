@@ -1,9 +1,9 @@
 .category-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    margin: 40px 0;
+    margin: 40px;
     overflow: hidden;
 }
 
@@ -17,6 +17,7 @@
     flex-direction: column;
     gap: 8px;
     padding: 0;
+    border: none;
 }
 
 #asian-img,
@@ -58,5 +59,16 @@ main {
 .main-contents {
     margin-top: 40px;
 }
+
+#header {
+    display: flex;
+    margin: 40px auto;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+#no-recipe-found {
+    margin-top: 80px;
+}
+
 
 

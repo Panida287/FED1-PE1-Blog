@@ -7,7 +7,7 @@ let page = 1;
 const accessToken = localStorage.getItem('accessToken');
 
 const fetchAndDisplay = (tag = '', searchTerm = '') => {
-    fetchData(blog, limit, page, tag, searchTerm, accessToken)
+    return fetchData(blog, limit, page, tag, searchTerm, accessToken)
         .then(({ posts, meta }) => {
             displayPosts(posts, mainContents);
 
@@ -17,9 +17,15 @@ const fetchAndDisplay = (tag = '', searchTerm = '') => {
 
             document.getElementById('previous').disabled = meta.isFirstPage || !!searchTerm;
             document.getElementById('next').disabled = meta.isLastPage || !!searchTerm;
+
+            return { posts, meta };
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            return { posts: [], meta: {} };
+        });
 };
+
 
 fetchAndDisplay();
 
