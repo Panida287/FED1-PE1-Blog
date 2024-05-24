@@ -250,12 +250,26 @@ export function applyFilter(filterButtons, callback) {
 export function applySearch(searchBtn, searchInput, fetchAndDisplay) {
     const search = () => {
         const searchTerm = searchInput.value.trim().toLowerCase();
+        const header = document.getElementById('header');
+        const noRecipeFound = document.getElementById('no-recipe-found');
         if (searchTerm) {
-            fetchAndDisplay('', searchTerm);
+            header.style.display = 'none';
+            fetchAndDisplay('', searchTerm).then(result => {
+                if(result.posts.length === 0){
+                    header.style.display = 'none';
+                    noRecipeFound.style.display = 'block';
+                    noRecipeFound.textContent = 'No recipes found';
+                } else {
+                    noRecipeFound.style.display = 'none';
+                }
+            });
+        } else {
+            header.style.display = 'flex';
+            noRecipeFound.style.display = 'none';
+            fetchAndDisplay();
         }
     };
 
-    searchBtn.addEventListener('click', search);
 
     searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
