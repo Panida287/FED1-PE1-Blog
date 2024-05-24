@@ -28,6 +28,7 @@
 
 .welcome-text {
     font-family: "Dancing Script", cursive;
+    text-align: center;
     color: white;
     width: 100%;
     display: flex;
@@ -100,6 +101,7 @@
     display: flex;
     flex-direction: column;
     width: 700px;
+    max-width: 90%;
     justify-content: flex-start;
     align-items: center;
     margin: 0;
@@ -155,8 +157,7 @@
 .slide-text {
     font-family: "bitter", sans-serif;
     font-size: 14px;
-    padding-left: 20px;
-    padding-top: 10px;
+    padding: 20px;
     color: white;
 }
 
@@ -178,6 +179,7 @@
 
 .contents {
     display: flex;
+    justify-content: center;
 }
 
 .highlight {
@@ -229,6 +231,7 @@
 
 .main-contents {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
@@ -244,7 +247,7 @@
 
 .main-contents-display {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     grid-template-rows: auto;
     width: 100%;
     justify-items: center;
@@ -260,5 +263,83 @@
     margin-top: 40px;
 }
 
+.see-more {
+    margin-top: 40px;
+}
 
 /*main contents end here*/
+
+@media (max-width: 1170px) {
+    .contents {
+        flex-direction: column;
+    }
+
+    .highlight {
+        border: none;
+        width: 100%;
+    }
+
+    .highlight-display {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .highlight-thumbnail {
+        height: 130px;
+        width: 130px;
+    }
+
+    .highlight-content h4 {
+        font-size: 16px
+    }
+
+    .top-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about {
+        width: 80%;
+    }
+}
+
+@media (max-width: 910px) {
+    .main-contents-display {
+        grid-template-columns: repeat(2, auto);
+    }
+    .welcome-text {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 607px) {
+
+    .main-contents-display {
+        display: block;
+        width: 80%;
+
+    }
+
+    .main-contents-thumbnail {
+        width: 100%;
+    }
+
+    .main-contents-container p {
+        width: 100%;
+    }
+
+    .highlight-display {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .highlight-thumbnail {
+        height: 100px;
+        width: 100px;
+    }
+
+    .highlight-content h4 {
+        font-size: 14px
+    }
+}

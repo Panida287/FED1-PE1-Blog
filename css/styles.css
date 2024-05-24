@@ -224,6 +224,18 @@ footer {
     align-items: center;
 }
 
+@media (max-width: 753px) {
+    footer {
+        justify-items: center;
+        justify-content: center;
+        width: 100%;
+        grid-template-areas:
+        'logo social-media'
+        'subscribe subscribe'
+        'copyright copyright';
+    }
+}
+
 
 
 
