@@ -10,6 +10,11 @@ const fetchAndDisplay = (tag = '', searchTerm = '') => {
     return fetchData(blog, limit, page, tag, searchTerm, accessToken)
         .then(({ posts, meta }) => {
             displayPosts(posts, mainContents);
+            const header = document.getElementById('header');
+            const noRecipeFound = document.getElementById('no-recipe-found');
+            header.style.display = 'flex';
+            noRecipeFound.style.display = 'none';
+
 
             // Update pagination
             const currentPageNumber = document.getElementById('current-page');
@@ -26,8 +31,8 @@ const fetchAndDisplay = (tag = '', searchTerm = '') => {
         });
 };
 
-
-fetchAndDisplay();
+// Initial fetch and display
+fetchAndDisplay().then()
 
 const nextBtn = document.getElementById('next');
 const prevBtn = document.getElementById('previous');
@@ -40,20 +45,20 @@ const updatePage = (increment) => {
 applyPagination(nextBtn, prevBtn, fetchAndDisplay, searchInput, updatePage);
 
 const filterButtons = document.querySelectorAll('.category-container button');
-applyFilter(filterButtons, tag => {
+applyFilter(filterButtons, async (tag) => {
     page = 1;  // Reset page to 1
     const header = document.getElementById('header');
     header.innerText = capitalizeFirstLetter(tag);
-    fetchAndDisplay(tag);
+    await fetchAndDisplay(tag); // Handle promise with await
 });
 
 const viewAllButton = document.getElementById('view-all');
-viewAllButton.addEventListener('click', () => {
+viewAllButton.addEventListener('click', async () => {
     mainContents.innerHTML = '';
     const header = document.getElementById('header');
     header.innerText = 'All recipes';
     page = 1;  // Reset page to 1
-    fetchAndDisplay();
+    await fetchAndDisplay(); // Handle promise with await
 });
 
 const searchBtn = document.getElementById('search-btn');
