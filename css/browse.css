@@ -67,6 +67,7 @@ main {
 }
 
 #no-recipe-found {
+    display: none;
     margin-top: 80px;
 }
 
