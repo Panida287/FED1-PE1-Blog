@@ -102,11 +102,4 @@
 
 </body>
 
-<!--Added script here due to using the same js as edit-post but different method for API to avoid error line-->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editFormData = document.getElementById('edit-form');
-        editFormData.addEventListener('submit', handleFormSubmission("PUT", "new-post"));
-    });
-</script>
 </html>
