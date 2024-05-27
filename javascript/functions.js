@@ -277,3 +277,16 @@ export function applySearch(searchBtn, searchInput, fetchAndDisplay) {
         }
     });
 }
+
+export function seeMore() {
+    const seeMoreBtn = document.querySelector('.see-more');
+    if (seeMoreBtn) {
+        seeMoreBtn.addEventListener('click', (e) => {
+            window.location.href = 'browse.html';
+        });
+    }
+}
+
+seeMore()
+
+
