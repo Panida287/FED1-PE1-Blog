@@ -1,3 +1,14 @@
+.search {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+#search-input {
+    width: 70%;
+    border-radius: 8px;
+}
+
 .category-container {
     display: flex;
     justify-content: space-evenly;
@@ -31,15 +42,18 @@
 }
 
 #asian-img {
-    background: url('../assets/background/asian.jpeg') no-repeat center/cover;
+    background: url('../assets/background/asian.jpeg') no-repeat center top -72px;
+    background-size: 140%;
 }
 
 #salad-img {
     background: url('../assets/background/salad.jpeg') no-repeat center/cover;
+    background-size: 140%;
 }
 
 #soup-img {
     background: url('../assets/background/soup.jpeg') no-repeat center/cover;
+    background-size: 130%;
 }
 
 #pasta-img {
@@ -56,10 +70,6 @@ main {
     align-items: center;
 }
 
-.main-contents {
-    margin-top: 40px;
-}
-
 #header {
     display: flex;
     margin: 40px auto;
@@ -71,5 +81,32 @@ main {
     margin-top: 80px;
 }
 
+#pagination button {
+    border: none;
+}
+
+@media (max-width: 780px) {
+    #asian-img,
+    #salad-img,
+    #soup-img,
+    #pasta-img,
+    #main-course-img {
+        height: 90px;
+        width: 90px;
+    }
+
+    #asian-img {
+        background: url('../assets/background/asian.jpeg') no-repeat center top -45px;
+        background-size: 140%;
+    }
+
+    #asian,
+    #salad,
+    #soup,
+    #pasta,
+    #main-course {
+        font-size: 14px;
+    }
+}
 
 
