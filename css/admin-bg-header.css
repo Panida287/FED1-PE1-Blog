@@ -1,8 +1,5 @@
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
 }
 
 .admin {
@@ -80,3 +77,4 @@ main {
     height: 100vh;
     width: 100vw;
 }
+
