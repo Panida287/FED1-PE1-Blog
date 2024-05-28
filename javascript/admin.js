@@ -1,4 +1,6 @@
-import { fetchData, displayPostsAdmin, capitalizeFirstLetter, applyPagination, applyFilter, applySearch } from './functions.js';
+import { fetchData, displayPostsAdmin, applyPagination, applyFilter, applySearch } from './functions.js';
+import { capitalizeFirstLetter } from './utils.js';
+
 
 const postsContainer = document.getElementById('posts-container');
 const accessToken = localStorage.getItem('accessToken');

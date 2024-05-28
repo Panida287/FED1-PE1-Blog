@@ -1,13 +1,19 @@
-import { getQueryParamValue, isValidUrl } from './utils.js';
-import { handleFormSubmission } from './functions.js';
+import { isValidUrl } from './utils.js';
 
-const postId = getQueryParamValue('id');
 const blogUrl = 'https://v2.api.noroff.dev/blog/posts/panpae';
 const accessToken = localStorage.getItem('accessToken');
 
+const payload = {
+    title: title,
+    body: body,
+    media: {
+        url: imageUrl,
+    },
+    tags: [tag],
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    if (postId) {
-        fetch(`${blogUrl}/${postId}`)
+   fetch(`${blogUrl}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -25,9 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorElement.textContent = error.message;
                 document.body.appendChild(errorElement);
             });
-    }
-
-    document.getElementById('blog-post-form').addEventListener('submit', handleFormSubmission(postId ? 'PUT' : 'POST', blogUrl, accessToken));
+    document.getElementById('blog-post-form').addEventListener('submit')
 });
 
 document.getElementById('preview-btn').addEventListener('click', (event) => {

@@ -215,10 +215,6 @@ function deletePost(postId, accessToken) {
     });
 }
 
-export function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 // Apply pagination functionality
 export function applyPagination(nextBtn, prevBtn, fetchAndDisplay, searchInput, updatePage) {
     nextBtn.addEventListener('click', () => {

@@ -1,4 +1,5 @@
-import { fetchData, displayPosts, capitalizeFirstLetter, applyFilter, applyPagination, applySearch } from './functions.js';
+import { fetchData, displayPosts, applyFilter, applyPagination, applySearch } from './functions.js';
+import { capitalizeFirstLetter, } from './utils.js';
 
 const mainContents = document.querySelector('.main-contents-display');
 const blog = 'https://v2.api.noroff.dev/blog/posts/panpae';
