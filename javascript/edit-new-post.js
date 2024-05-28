@@ -1,4 +1,6 @@
-import { isValidUrl } from './utils.js';
+import { checkIfLoggedIn } from './functions.js';
+
+checkIfLoggedIn();
 
 const blogUrl = 'https://v2.api.noroff.dev/blog/posts/panpae';
 const accessToken = localStorage.getItem('accessToken');
