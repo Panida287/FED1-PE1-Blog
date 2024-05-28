@@ -86,7 +86,6 @@ h1 {
     width: 300px;
     position: fixed;
     top: 50%;
-
     left: 50%;
     background: white;
     padding: 20px;
@@ -127,7 +126,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
     gap: 8px;
     padding: 0;
     z-index: 2;

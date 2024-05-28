@@ -16,7 +16,7 @@
     <script type="module" src="javascript/utils.js" defer></script>
     <script type="module" src="javascript/functions.js" defer></script>
     <script type="module" src="javascript/admin-header.js" defer></script>
-    <script type="module" src="javascript/edit-new-post.js" defer></script>
+    <script type="module" src="javascript/make-post.js" defer></script>
 
     <script src="https://kit.fontawesome.com/5d32d5fe01.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,11 +52,9 @@
 </header>
 
 <main>
-    <div class="back-to-admin-btn-container">
-        <button class="btn-black" id="back-to-admin">
-            < Back to admin
-        </button>
-    </div>
+    <button class="btn-black" id="back-to-admin">
+        < Back to admin
+    </button>
     <h2>new Blog Post</h2>
     <form id="blog-post-form">
         <div class="title">
@@ -77,16 +75,16 @@
         </div>
         <div class="btns-container">
             <button id="preview-btn" class="btn-black">preview</button>
-            <button type="submit" class="btn-black">post</button>
+            <button type="submit" id="new-post" class="btn-black">post</button>
         </div>
     </form>
 
     <div id="overlay"></div>
 
     <div id="preview">
-            <h3 id="preview-title"></h3>
-            <div id="preview-img"></div>
-            <p id="preview-body"></p>
+        <h3 id="preview-title"></h3>
+        <div id="preview-img"></div>
+        <p id="preview-body"></p>
         <div class="btns-container">
             <button id="preview-close-btn" class="btn-black">close</button>
         </div>
@@ -94,7 +92,7 @@
 
     <div id="post-success">
         <h4>
-           New blog has been posted!
+            New blog has been posted!
         </h4>
         <button id="success-close-btn" class="btn-black">close</button>
     </div>
