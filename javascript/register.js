@@ -79,9 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 // Handle successful registration
-                console.log('Registration successful:', data);
-
-                // Show overlay and successful message
                 overlay.style.display = 'block';
                 successfulMessage.style.display = 'flex';
             })

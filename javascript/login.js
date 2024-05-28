@@ -12,10 +12,20 @@ document.getElementById('form').addEventListener('submit', function(event) {
         body: JSON.stringify({email, password})
     })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Login failed. Please check your credentials.');
-            }
-            return response.json();
+            return response.json().then(data => {
+                if (!response.ok) {
+                    // Log the response status and error message
+                    console.error('Failed to register:', response.status, data);
+
+                    // Extract and display the error message
+                    const errorMessage = data.errors && data.errors.length > 0
+                        ? data.errors[0].message
+                        : 'Failed to register';
+
+                    throw new Error(errorMessage);
+                }
+                return data;
+            });
         })
         .then(data => {
             console.log(data);
