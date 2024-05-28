@@ -109,6 +109,7 @@ nav {
     text-decoration: none;
     justify-items: center;
     align-items: center;
+    width: 80%;
     height: 400px;
     box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
     margin: 20px;
@@ -116,7 +117,7 @@ nav {
 }
 
 .main-contents-thumbnail {
-    width: 225px;
+    width: 100%;
     height: 225px;
     background: bisque;
     position: relative;
@@ -147,7 +148,7 @@ nav {
     font-family: "bitter", sans-serif;
     font-size: 14px;
     color: black;
-    width: 225px;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -160,6 +161,7 @@ nav {
     height: 10%;
     display: flex;
     align-items: center;
+    border-radius: 10px;
 }
 
 /*posts Elements end here*/
@@ -228,7 +230,6 @@ footer {
     footer {
         justify-items: center;
         justify-content: center;
-        width: 100%;
         grid-template-areas:
         'logo social-media'
         'subscribe subscribe'
