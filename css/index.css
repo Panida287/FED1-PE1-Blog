@@ -270,7 +270,7 @@
 
 @media (max-width: 1400px) {
     .main-contents-display {
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(3, auto);
     }
 }
 
