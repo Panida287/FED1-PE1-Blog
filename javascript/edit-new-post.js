@@ -2,18 +2,6 @@ import { checkIfLoggedIn } from './functions.js';
 
 checkIfLoggedIn();
 
-const blogUrl = 'https://v2.api.noroff.dev/blog/posts/panpae';
-const accessToken = localStorage.getItem('accessToken');
-
-const payload = {
-    title: title,
-    body: body,
-    media: {
-        url: imageUrl,
-    },
-    tags: [tag],
-}
-
 document.addEventListener('DOMContentLoaded', () => {
    fetch(`${blogUrl}`)
             .then(response => {
