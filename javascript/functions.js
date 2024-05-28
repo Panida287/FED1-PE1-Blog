@@ -1,4 +1,17 @@
-// functions.js
+export function checkIfLoggedIn() {
+    // Retrieve the accessToken and userData from localStorage
+    const accessToken = localStorage.getItem('accessToken');
+    const userDataString = localStorage.getItem('userData');
+
+    if (!accessToken || !userDataString) {
+        // If either the accessToken or userData is missing, redirect to login
+        window.location.href = 'login.html';
+        return;
+    }
+
+    // If everything is fine, you can continue with your application logic
+    console.log('Access token is valid.');
+}
 
 export function fetchData(blog, limit, page, tag, searchTerm, accessToken) {
     const apiUrl = `${blog}?${searchTerm ? '' : `limit=${limit}&page=${page}`}${tag ? `&_tag=${tag}` : ''}`;
