@@ -1,7 +1,8 @@
-import { fetchData, displayPostsAdmin, applyPagination, applyFilter, applySearch, checkIfLoggedIn } from './functions.js';
+import { fetchData, displayPostsAdmin, applyPagination, applyFilter, applySearch, checkIfLoggedIn, initializeAdminPanel } from './functions.js';
 import { capitalizeFirstLetter } from './utils.js';
 
-checkIfLoggedIn()
+checkIfLoggedIn();
+initializeAdminPanel();
 
 const postsContainer = document.getElementById('posts-container');
 const accessToken = localStorage.getItem('accessToken');
@@ -31,6 +32,7 @@ fetchAndDisplay();
 const nextBtn = document.getElementById('next');
 const prevBtn = document.getElementById('previous');
 const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
 
 const updatePage = (increment) => {
     page += increment;
@@ -77,5 +79,22 @@ document.getElementById('view-all').addEventListener('click', () => {
     dropdown.style.display = 'none';
 });
 
-const searchBtn = document.getElementById('search-btn');
+// Function to handle search
+const handleSearch = () => {
+    currentSearchTerm = searchInput.value.trim().toLowerCase();
+    fetchAndDisplay(currentTag, currentSearchTerm);
+};
+
+// Add event listener for the search button
+searchBtn.addEventListener('click', handleSearch);
+
+// Add event listener for pressing Enter in the search input
+searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        handleSearch();
+    }
+});
+
+// Apply search functionality
 applySearch(searchBtn, searchInput, fetchAndDisplay);
+
