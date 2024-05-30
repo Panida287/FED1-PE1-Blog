@@ -363,8 +363,7 @@ export function handleFormSubmission(method, postId = null) {
             tags: tagsData.trim() !== "" ? [tagsData] : undefined,
             media: isValidUrl(imageData) ? { url: imageData } : undefined,
         };
-        const apiUrl = 'https://v2.api.noroff.dev';
-        let url = postId ? `${apiUrl}/blog/posts/panpae/${postId}`: apiUrl;
+
         const accessToken = localStorage.getItem('accessToken');
 
         fetch((`https://v2.api.noroff.dev/blog/posts/panpae/${postId}`), {
