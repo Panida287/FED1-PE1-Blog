@@ -74,3 +74,11 @@
     width: 100vw;
 }
 
+@media (max-width: 500px) {
+    .admin,
+    .user {
+        gap: 4px;
+    }
+}
+
+

@@ -347,3 +347,13 @@
         font-size: 14px
     }
 }
+
+@media (max-width: 500px) {
+    .highlight-display {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        width: 100%;
+        align-items: center;
+    }
+}
