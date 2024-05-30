@@ -62,4 +62,6 @@ Sitemap:
   - /account/register.html (Account Register Page)
   
 
-site is deployed on: https://mumhowdoi.netlify.app
+site is deployed on:
+user view : https://mumhowdoi.netlify.app
+admin view : https://mumhowdoi.netlify.app/admin
