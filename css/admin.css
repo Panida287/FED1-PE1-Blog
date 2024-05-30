@@ -188,3 +188,27 @@ h1 {
         flex-direction: row;
     }
 }
+
+@media (max-width: 500px) {
+    .post {
+        grid-template-columns: auto;
+        grid-template-rows: repeat(3, auto);
+        justify-items: center;
+        grid-template-areas:
+        'details'
+        'img'
+        'btns'
+    }
+
+    .body {
+        display: none;
+    }
+
+    .img {
+        grid-area: img;
+    }
+
+    .title {
+        text-align: center;
+    }
+}

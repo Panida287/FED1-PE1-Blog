@@ -236,6 +236,15 @@ footer {
         'subscribe subscribe'
         'copyright copyright';
     }
+
+    .logo {
+        width: 20%;
+    }
+
+    .subscribe-footer {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
 }
 
 

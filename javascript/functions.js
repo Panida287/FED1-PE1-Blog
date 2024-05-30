@@ -31,10 +31,10 @@ export function fetchData(blog, limit, page, tag, searchTerm, accessToken) {
         });
 }
 
-export function displayPosts(posts, container) {
+export function displayPosts(posts, container, isAdmin = false) {
     container.innerHTML = '';
     posts.forEach(post => {
-        const postElement = createPostElement(post);
+        const postElement = isAdmin ? createPostElementAdmin(post) : createPostElement(post);
         container.appendChild(postElement);
     });
 }
@@ -57,19 +57,17 @@ function createPostElementCommon(post, type = 'user') {
         const overlay = document.createElement('div');
         overlay.classList.add('main-contents-overlay');
         thumbnail.appendChild(overlay);
-    }
 
-    const contentTitle = document.createElement('h4');
-    contentTitle.textContent = post.title;
-    thumbnail.appendChild(contentTitle);
+        const contentTitle = document.createElement('h4');
+        contentTitle.textContent = post.title;
+        thumbnail.appendChild(contentTitle);
 
-    const contentBody = document.createElement('p');
-    const words = post.body.split(' ');
-    const truncatedText = words.slice(0, 10).join(' ');
-    contentBody.innerHTML = truncatedText + '...<br><br>';
-    postElement.appendChild(contentBody);
+        const contentBody = document.createElement('p');
+        const words = post.body.split(' ');
+        const truncatedText = words.slice(0, 10).join(' ');
+        contentBody.innerHTML = truncatedText + '...<br><br>';
+        postElement.appendChild(contentBody);
 
-    if (type !== 'admin') {
         const readMoreButton = document.createElement('button');
         readMoreButton.textContent = 'Read more';
         readMoreButton.classList.add('btn-black', 'read-more');
@@ -81,7 +79,21 @@ function createPostElementCommon(post, type = 'user') {
         const detailsContainer = document.createElement('div');
         detailsContainer.classList.add('details');
         postElement.appendChild(detailsContainer);
+
+        const contentTitle = document.createElement('div');
+        contentTitle.classList.add('title');
+        contentTitle.innerHTML = post.title;
         detailsContainer.appendChild(contentTitle);
+
+        const contentBody = document.createElement('div');
+        contentBody.classList.add('body');
+        const words = post.body.split(' ');
+        if (words.length > 20) {
+            const truncatedText = words.slice(0, 20).join(' ');
+            contentBody.innerHTML = truncatedText + '...<br><br>';
+        } else {
+            contentBody.innerHTML = post.body;
+        }
         detailsContainer.appendChild(contentBody);
 
         const userContainer = document.createElement('div');
@@ -163,6 +175,7 @@ function createPostElementCommon(post, type = 'user') {
 
     return postElement;
 }
+
 
 export function createPostElement(post) {
     return createPostElementCommon(post, 'user');
@@ -342,6 +355,7 @@ export function handleFormSubmission(method, postId = null) {
         const imageData = document.getElementById('imageUrl').value;
         const postSuccess = document.getElementById('post-success');
         const overlay = document.getElementById('overlay');
+        const formData = document.getElementById('form');
 
         const postData = {
             title: titleData,
@@ -350,10 +364,9 @@ export function handleFormSubmission(method, postId = null) {
             media: isValidUrl(imageData) ? { url: imageData } : undefined,
         };
 
-        let url = postId ? `${apiUrl}/${postId}` : apiUrl;
         const accessToken = localStorage.getItem('accessToken');
 
-        fetch(url, {
+        fetch((`https://v2.api.noroff.dev/blog/posts/panpae/${postId}`), {
             method: method,
             headers: {
                 "Content-Type": "application/json",
@@ -425,7 +438,7 @@ export function setupFormHandlers() {
 export function fetchAndDisplayPosts(blog, limit, page, tag, searchTerm, accessToken, postsContainer) {
     fetchData(blog, limit, page, tag, searchTerm, accessToken)
         .then(({ posts, meta }) => {
-            displayPosts(posts, postsContainer, createPostElementAdmin);
+            displayPosts(posts, postsContainer, true);  // Add the true parameter to indicate admin view
 
             // Update pagination
             const currentPageNumber = document.getElementById('current-page');
@@ -550,81 +563,6 @@ export function login() {
                 console.error('Error:', error.message);
                 document.getElementById('message').textContent = error.message;
             });
-    });
-}
-
-export function register() {
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('DOM fully loaded and parsed');
-        const form = document.getElementById('form');
-        const messageDiv = document.getElementById('message');
-        const overlay = document.querySelector('.overlay');
-        const successfulMessage = document.querySelector('.successful');
-        const goToLoginButton = document.getElementById('go-to-login');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            console.log('Form submit event triggered');
-
-            const email = document.getElementById('email').value;
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const repeatPassword = document.getElementById('repeat-password').value;
-            const avatar = document.getElementById('avatar').value;
-            const bio = document.getElementById('bio').value;
-
-            if (password !== repeatPassword) {
-                messageDiv.textContent = 'Passwords do not match';
-                console.log('Passwords do not match');
-                return;
-            }
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@stud\.noroff\.no$/;
-            if (!emailPattern.test(email)) {
-                messageDiv.textContent = 'Email must be @stud.noroff.no';
-                console.log('Email format is incorrect');
-                return;
-            }
-
-            const payload = {
-                name: username,
-                email: email,
-                password: password,
-                ...(bio && { bio }),
-                ...(avatar && { avatar: { url: avatar, alt: '' } })
-            };
-
-            console.log('Payload:', payload);
-
-            fetch('https://v2.api.noroff.dev/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            })
-                .then(response => response.json().then(data => {
-                    if (!response.ok) {
-                        const errorMessage = data.errors && data.errors.length > 0
-                            ? data.errors[0].message
-                            : 'Failed to register';
-                        throw new Error(errorMessage);
-                    }
-                    return data;
-                }))
-                .then(data => {
-                    overlay.style.display = 'block';
-                    successfulMessage.style.display = 'flex';
-                })
-                .catch(error => {
-                    console.error('Registration error:', error.message);
-                    messageDiv.textContent = `Registration failed: ${error.message}`;
-                });
-        });
-
-        goToLoginButton.addEventListener('click', () => {
-            window.location.href = 'login.html';
-        });
     });
 }
 

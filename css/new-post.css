@@ -8,11 +8,10 @@ h2 {
     align-items: center;
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
-    margin-bottom: 40px;
+    margin: 40px;
 }
 
-#blog-post-form,
-#edit-form {
+#form {
     display: flex;
     flex-direction: column;
     margin: auto;
