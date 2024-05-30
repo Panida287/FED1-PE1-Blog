@@ -31,10 +31,10 @@ export function fetchData(blog, limit, page, tag, searchTerm, accessToken) {
         });
 }
 
-export function displayPosts(posts, container) {
+export function displayPosts(posts, container, isAdmin = false) {
     container.innerHTML = '';
     posts.forEach(post => {
-        const postElement = createPostElement(post);
+        const postElement = isAdmin ? createPostElementAdmin(post) : createPostElement(post);
         container.appendChild(postElement);
     });
 }
@@ -57,19 +57,17 @@ function createPostElementCommon(post, type = 'user') {
         const overlay = document.createElement('div');
         overlay.classList.add('main-contents-overlay');
         thumbnail.appendChild(overlay);
-    }
 
-    const contentTitle = document.createElement('h4');
-    contentTitle.textContent = post.title;
-    thumbnail.appendChild(contentTitle);
+        const contentTitle = document.createElement('h4');
+        contentTitle.textContent = post.title;
+        thumbnail.appendChild(contentTitle);
 
-    const contentBody = document.createElement('p');
-    const words = post.body.split(' ');
-    const truncatedText = words.slice(0, 10).join(' ');
-    contentBody.innerHTML = truncatedText + '...<br><br>';
-    postElement.appendChild(contentBody);
+        const contentBody = document.createElement('p');
+        const words = post.body.split(' ');
+        const truncatedText = words.slice(0, 10).join(' ');
+        contentBody.innerHTML = truncatedText + '...<br><br>';
+        postElement.appendChild(contentBody);
 
-    if (type !== 'admin') {
         const readMoreButton = document.createElement('button');
         readMoreButton.textContent = 'Read more';
         readMoreButton.classList.add('btn-black', 'read-more');
@@ -81,7 +79,21 @@ function createPostElementCommon(post, type = 'user') {
         const detailsContainer = document.createElement('div');
         detailsContainer.classList.add('details');
         postElement.appendChild(detailsContainer);
+
+        const contentTitle = document.createElement('div');
+        contentTitle.classList.add('title');
+        contentTitle.innerHTML = post.title;
         detailsContainer.appendChild(contentTitle);
+
+        const contentBody = document.createElement('div');
+        contentBody.classList.add('body');
+        const words = post.body.split(' ');
+        if (words.length > 20) {
+            const truncatedText = words.slice(0, 20).join(' ');
+            contentBody.innerHTML = truncatedText + '...<br><br>';
+        } else {
+            contentBody.innerHTML = post.body;
+        }
         detailsContainer.appendChild(contentBody);
 
         const userContainer = document.createElement('div');
@@ -163,6 +175,7 @@ function createPostElementCommon(post, type = 'user') {
 
     return postElement;
 }
+
 
 export function createPostElement(post) {
     return createPostElementCommon(post, 'user');
@@ -342,6 +355,7 @@ export function handleFormSubmission(method, postId = null) {
         const imageData = document.getElementById('imageUrl').value;
         const postSuccess = document.getElementById('post-success');
         const overlay = document.getElementById('overlay');
+        const formData = document.getElementById('form');
 
         const postData = {
             title: titleData,
@@ -349,11 +363,11 @@ export function handleFormSubmission(method, postId = null) {
             tags: tagsData.trim() !== "" ? [tagsData] : undefined,
             media: isValidUrl(imageData) ? { url: imageData } : undefined,
         };
-
-        let url = postId ? `${apiUrl}/${postId}` : apiUrl;
+        const apiUrl = 'https://v2.api.noroff.dev';
+        let url = postId ? `${apiUrl}/blog/posts/panpae/${postId}`: apiUrl;
         const accessToken = localStorage.getItem('accessToken');
 
-        fetch(url, {
+        fetch((`https://v2.api.noroff.dev/blog/posts/panpae/${postId}`), {
             method: method,
             headers: {
                 "Content-Type": "application/json",
@@ -425,7 +439,7 @@ export function setupFormHandlers() {
 export function fetchAndDisplayPosts(blog, limit, page, tag, searchTerm, accessToken, postsContainer) {
     fetchData(blog, limit, page, tag, searchTerm, accessToken)
         .then(({ posts, meta }) => {
-            displayPosts(posts, postsContainer, createPostElementAdmin);
+            displayPosts(posts, postsContainer, true);  // Add the true parameter to indicate admin view
 
             // Update pagination
             const currentPageNumber = document.getElementById('current-page');

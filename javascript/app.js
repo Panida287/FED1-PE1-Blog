@@ -12,7 +12,7 @@ import {
     displayPostDetails,
     displayBlogContents,
     displayRelatedPostsSection,
-    setupBrowsePage
+    setupBrowsePage,
 } from "./functions.js";
 import {
     checkIfLoggedIn,
