@@ -7,7 +7,6 @@ import {
     handleFormSubmission,
     setupNewPostButton,
     login,
-    register,
     seeMore,
     displayPostDetails,
     displayBlogContents,
@@ -69,8 +68,6 @@ function route() {
         case 'login.html':
             login();
             break;
-        case 'register.html':
-            register();
     }
 }
 
