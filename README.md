@@ -55,11 +55,14 @@ account by entering my name, email and password.
 
 Sitemap:
 
-  - /index.html (Blog Feed Page)
-  - /post/index.html (Blog Post Public Page)
-  - /post/edit.html (Blog Post Edit Page)
-  - /account/login.html (Account Login Page)
-  - /account/register.html (Account Register Page)
+  - index.html (Blog Feed Page)
+  - browse.html (Blog Post Public Page)
+  - single-post.html (Post Detail Page)
+  - new-post.html (New Post)
+  - edit-post.html (Edit Post)
+  - admin.html (Admin Panel
+  - login.html (Account Login Page)
+  - register.html (Account Register Page)
   
 
 site is deployed on:
