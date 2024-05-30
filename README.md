@@ -68,4 +68,4 @@ Sitemap:
 site is deployed on:
 user view : https://mumhowdoi.netlify.app
 
-admin view : https://mumhowdoi.netlify.app/admin
+admin view : https://mumhowdoi.netlify.app/login
