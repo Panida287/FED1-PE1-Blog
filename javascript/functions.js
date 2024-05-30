@@ -8,7 +8,12 @@ export function fetchData(blog, limit, page, tag, searchTerm, accessToken) {
             "Authorization": `Bearer ${accessToken}`
         }
     })
-        .then(response => response.ok ? response.json() : Promise.reject(new Error('Failed to fetch data')))
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
         .then(data => {
             let posts = data.data;
             if (searchTerm) {
@@ -26,10 +31,10 @@ export function fetchData(blog, limit, page, tag, searchTerm, accessToken) {
         });
 }
 
-export function displayPosts(posts, container, createElementFn) {
+export function displayPosts(posts, container) {
     container.innerHTML = '';
     posts.forEach(post => {
-        const postElement = createElementFn(post);
+        const postElement = createPostElement(post);
         container.appendChild(postElement);
     });
 }
@@ -178,6 +183,7 @@ function deletePost(postId) {
     });
 }
 
+// Apply pagination functionality
 export function applyPagination(nextBtn, prevBtn, fetchAndDisplay, searchInput, updatePage) {
     nextBtn.addEventListener('click', () => {
         if (!searchInput.value) {
@@ -194,6 +200,7 @@ export function applyPagination(nextBtn, prevBtn, fetchAndDisplay, searchInput, 
     });
 }
 
+// Apply filter functionality
 export function applyFilter(filterButtons, callback) {
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -211,7 +218,7 @@ export function applySearch(searchBtn, searchInput, fetchAndDisplay) {
         if (searchTerm) {
             header.style.display = 'none';
             fetchAndDisplay('', searchTerm).then(result => {
-                if (result.posts.length === 0) {
+                if(result.posts.length === 0){
                     header.style.display = 'none';
                     noRecipeFound.style.display = 'block';
                     noRecipeFound.textContent = 'No recipes found';
@@ -226,13 +233,12 @@ export function applySearch(searchBtn, searchInput, fetchAndDisplay) {
         }
     };
 
+
     searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             search();
         }
     });
-
-    searchBtn.addEventListener('click', search);
 }
 
 export function seeMore() {
@@ -700,7 +706,7 @@ export function displayPostDetails() {
     }
 }
 
-export function displayHighlightContents() {
+export function displayBlogContents() {
     const highlightDisplay = document.querySelector('.highlight-display');
     const mainContents = document.querySelector('.main-contents-display');
     const carousel = document.querySelector('[data-carousel]');
@@ -710,10 +716,39 @@ export function displayHighlightContents() {
 
     fetchData(blog, 12, 1, '', '', accessToken)
         .then(({ posts }) => {
-            displayPosts(posts.slice(7, 11), highlightDisplay, createHighlightContent);
-            displayPosts(posts.slice(0, 6), mainContents, createPostElement);
+            // Highlight Posts
+            const highlightPosts = posts.slice(7, 11);
+            highlightPosts.forEach(post => {
+                const highlightContent = document.createElement('div');
+                highlightContent.classList.add('highlight-content');
 
-            posts.slice(0, 3).forEach((post, index) => {
+                const thumbnailLink = document.createElement('a');
+                thumbnailLink.classList.add('highlight-thumbnail');
+                thumbnailLink.href = `single-post.html?id=${post.id}`;
+                thumbnailLink.style.backgroundImage = `url(${post.media.url})`;
+                thumbnailLink.style.backgroundRepeat = 'no-repeat';
+                thumbnailLink.style.backgroundSize = 'cover';
+                thumbnailLink.style.backgroundPosition = 'center';
+
+                highlightContent.appendChild(thumbnailLink);
+
+                const titleElement = document.createElement('h4');
+                titleElement.classList.add('highlight-title');
+                titleElement.textContent = post.title;
+                highlightContent.appendChild(titleElement);
+                highlightDisplay.appendChild(highlightContent);
+            });
+
+            // More recipes
+            const moreRecipes = posts.slice(0, 6);
+            moreRecipes.forEach(post => {
+                const postElement = createPostElement(post);
+                mainContents.appendChild(postElement);
+            });
+
+            // Latest Posts for Carousel
+            const latestPosts = posts.slice(0, 3);
+            latestPosts.forEach((post, index) => {
                 const slideId = `slide-${index + 1}`;
                 const slide = slidesContainer.querySelector(`#${slideId}`);
                 const slideTitle = slide.querySelector('.slide-title');
@@ -722,10 +757,14 @@ export function displayHighlightContents() {
 
                 slide.setAttribute('href', `single-post.html?id=${post.id}&tags=${tagsString}`);
                 slideTitle.textContent = post.title;
-                slideText.textContent = post.body.length > 200 ? post.body.substring(0, 200) + '...' : post.body;
+                const words = post.body.split(' ');
+                slideText.textContent = words.length > 15 ? words.slice(0, 15).join(' ') + '...' : post.body;
 
                 if (post.media && post.media.url) {
-                    setElementBackground(slide, post.media.url);
+                    slide.style.backgroundImage = `url(${post.media.url})`;
+                    slide.style.backgroundRepeat = 'no-repeat';
+                    slide.style.backgroundSize = 'cover';
+                    slide.style.backgroundPosition = 'center';
                 }
             });
         })
@@ -736,32 +775,6 @@ export function displayHighlightContents() {
             errorElement.textContent = error.message;
             mainContents.appendChild(errorElement);
         });
-
-    function createHighlightContent(post) {
-        const highlightContent = document.createElement('div');
-        highlightContent.classList.add('highlight-content');
-
-        const thumbnailLink = document.createElement('a');
-        thumbnailLink.classList.add('highlight-thumbnail');
-        thumbnailLink.href = `single-post.html?id=${post.id}`;
-        setElementBackground(thumbnailLink, post.media.url);
-
-        highlightContent.appendChild(thumbnailLink);
-
-        const titleElement = document.createElement('h4');
-        titleElement.classList.add('highlight-title');
-        titleElement.textContent = post.title;
-        highlightContent.appendChild(titleElement);
-
-        return highlightContent;
-    }
-
-    function setElementBackground(element, url) {
-        element.style.backgroundImage = `url(${url})`;
-        element.style.backgroundRepeat = 'no-repeat';
-        element.style.backgroundSize = 'cover';
-        element.style.backgroundPosition = 'center';
-    }
 }
 
 export function displayRelatedPostsSection() {
@@ -833,81 +846,96 @@ export function displayRelatedPostsSection() {
     }
 }
 
-export function fetchAndDisplayPostsForBrowse(blog, limit, page, tag, searchTerm, accessToken, mainContents) {
-    return fetchData(blog, limit, page, tag, searchTerm, accessToken)
-        .then(({ posts, meta }) => {
-            displayPosts(posts, mainContents);
-            const header = document.getElementById('header');
-            const noRecipeFound = document.getElementById('no-recipe-found');
-            header.style.display = 'flex';
-            noRecipeFound.style.display = 'none';
-
-            // Update pagination
-            const currentPageNumber = document.getElementById('current-page');
-            currentPageNumber.innerText = meta.currentPage || 1;
-
-            document.getElementById('previous').disabled = meta.isFirstPage || !!searchTerm;
-            document.getElementById('next').disabled = meta.isLastPage || !!searchTerm;
-
-            return { posts, meta };
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            return { posts: [], meta: {} };
-        });
-}
-
 export function setupBrowsePage(blog, limit, accessToken) {
     const mainContents = document.querySelector('.main-contents-display');
     if (!mainContents) {
         console.error('Main contents container not found');
         return;
     }
+
     let page = 1;
 
-    const fetchAndDisplay = (tag = '', searchTerm = '') => fetchAndDisplayPostsForBrowse(blog, limit, page, tag, searchTerm, accessToken, mainContents);
+    const fetchAndDisplay = (tag = '', searchTerm = '') => {
+        return fetchData(blog, limit, page, tag, searchTerm, accessToken)
+            .then(({ posts, meta }) => {
+                displayPosts(posts, mainContents);
+                const header = document.getElementById('header');
+                const noRecipeFound = document.getElementById('no-recipe-found');
+                header.style.display = 'flex';
+                noRecipeFound.style.display = 'none';
+
+                // Update pagination
+                const currentPageNumber = document.getElementById('current-page');
+                currentPageNumber.innerText = meta.currentPage || 1;
+
+                document.getElementById('previous').disabled = meta.isFirstPage || !!searchTerm;
+                document.getElementById('next').disabled = meta.isLastPage || !!searchTerm;
+
+                return { posts, meta };
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                return { posts: [], meta: {} };
+            });
+    };
 
     // Initial fetch and display
-    fetchAndDisplay().then();
+    fetchAndDisplay();
 
     const nextBtn = document.getElementById('next');
     const prevBtn = document.getElementById('previous');
     const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const viewAllButton = document.getElementById('view-all');
+    const filterButtons = document.querySelectorAll('.category-container button');
 
-    if (!nextBtn || !prevBtn || !searchInput) {
-        console.error('Pagination or search elements not found');
-        return;
-    }
-
-    const updatePage = (increment) => {
+    const updatePage = increment => {
         page += increment;
+        fetchAndDisplay();
     };
 
-    applyPagination(nextBtn, prevBtn, fetchAndDisplay, searchInput, updatePage);
+    // Custom applyPagination to correctly call updatePage
+    const applyPagination = (nextBtn, prevBtn, searchInput) => {
+        nextBtn.addEventListener('click', () => {
+            if (!searchInput.value) {
+                updatePage(1);
+            }
+        });
 
-    const filterButtons = document.querySelectorAll('.category-container button');
-    applyFilter(filterButtons, async (tag) => {
-        page = 1;  // Reset page to 1
+        prevBtn.addEventListener('click', () => {
+            if (!searchInput.value) {
+                updatePage(-1);
+            }
+        });
+    };
+
+    applyPagination(nextBtn, prevBtn, searchInput);
+
+    applyFilter(filterButtons, async tag => {
+        page = 1; // Reset page to 1
         const header = document.getElementById('header');
         header.innerText = capitalizeFirstLetter(tag);
         await fetchAndDisplay(tag); // Handle promise with await
     });
 
-    const viewAllButton = document.getElementById('view-all');
     if (viewAllButton) {
         viewAllButton.addEventListener('click', async () => {
             mainContents.innerHTML = '';
             const header = document.getElementById('header');
             header.innerText = 'All recipes';
-            page = 1;  // Reset page to 1
+            page = 1; // Reset page to 1
             await fetchAndDisplay(); // Handle promise with await
         });
     }
 
-    const searchBtn = document.getElementById('search-btn');
-    if (!searchBtn) {
-        console.error('Search button not found');
-        return;
+    if (searchBtn) {
+        applySearch(searchBtn, searchInput, fetchAndDisplay);
     }
-    applySearch(searchBtn, searchInput, fetchAndDisplay);
+
+    // Add event listener for pressing Enter in the search input
+    searchInput.addEventListener('keypress', event => {
+        if (event.key === 'Enter') {
+            fetchAndDisplay('', searchInput.value.trim().toLowerCase());
+        }
+    });
 }

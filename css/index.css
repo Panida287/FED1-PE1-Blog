@@ -247,7 +247,7 @@
 
 .main-contents-display {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     grid-template-rows: auto;
     width: 100%;
     justify-items: center;
@@ -267,12 +267,6 @@
 }
 
 /*main contents end here*/
-
-@media (max-width: 1400px) {
-    .main-contents-display {
-        grid-template-columns: repeat(3, auto);
-    }
-}
 
 @media (max-width: 1170px) {
     .contents {
@@ -314,6 +308,10 @@
     }
     .welcome-text {
         font-size: 40px;
+    }
+
+    .slide-text {
+        padding-bottom: 0;
     }
 }
 

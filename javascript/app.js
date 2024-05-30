@@ -10,7 +10,7 @@ import {
     register,
     seeMore,
     displayPostDetails,
-    displayHighlightContents,
+    displayBlogContents,
     displayRelatedPostsSection,
     setupBrowsePage
 } from "./functions.js";
@@ -28,12 +28,14 @@ function route() {
     const pathname = getPathname();
     // If workspace.xml appears in the pathname, remove it
     const cleanedPathname = pathname.replace('workspace.xml/', '');
+    const blog = 'https://v2.api.noroff.dev/blog/posts/panpae';
+    const limit = 12;
 
     switch (cleanedPathname) {
         case '':
         case 'index.html':
             setupCarousel();
-            displayHighlightContents();
+            displayBlogContents();
             seeMore();
             break;
         case 'edit-post.html':
@@ -41,6 +43,9 @@ function route() {
             initializeAdminPanel();
             setupBackToAdminButton();
             editPostForm();
+            break;
+        case 'browse.html':
+            setupBrowsePage(blog, limit);
             break;
         case 'single-post.html':
             displayPostDetails()
