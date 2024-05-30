@@ -15,11 +15,22 @@
 
 .category-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 20px;
     align-items: center;
     width: 100%;
     margin: 40px;
     overflow: hidden;
+}
+
+.wrap-1 {
+    display: flex;
+    gap: 20px;
+}
+
+.wrap-2 {
+    display: flex;
+    gap: 20px;
 }
 
 #asian,
