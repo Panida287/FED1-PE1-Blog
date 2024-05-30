@@ -4,6 +4,10 @@
     gap: 8px;
 }
 
+#search-btn {
+    display: none;
+}
+
 #search-input {
     width: 70%;
     border-radius: 8px;
